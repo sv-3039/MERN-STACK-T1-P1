@@ -1,0 +1,125 @@
+/* ============================
+   Main Navbar Container
+============================ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e91e63; /* Beautiful pink theme color */
+  color: white;
+  padding: 15px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ============================
+   Logo & Brand Name
+============================ */
+.logo {
+  font-size: 28px;
+}
+
+.website-name {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  flex-grow: 1; /* Pushes the nav links to the center/right */
+  margin-left: 15px;
+}
+
+/* ============================
+   Navigation Links
+============================ */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================
+   Dropdown Menu (Categories)
+============================ */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 130%; /* Pushes it just below the navbar */
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 220px;
+  z-index: 1000;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  font-weight: normal;
+  border-radius: 0; /* Override the default nav-link radius */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect for the dropdown items */
+.dropdown-menu li a:hover {
+  background-color: #fce4ec; /* Light pink background */
+  color: #e91e63; /* Dark pink text */
+  padding-left: 25px; /* Slight indent effect on hover */
+}
+
+/* ============================
+   Cart Button
+============================ */
+.cart {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart:hover {
+  background-color: white;
+  color: #e91e63;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
