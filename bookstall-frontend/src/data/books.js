@@ -1,0 +1,68 @@
+const books = [
+  {
+    id: 1,
+    title: "The Alchemist",
+    author: "Paulo Coelho",
+    category: "Fiction",
+    price: 499,
+    image: "https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg",
+  },
+  {
+    id: 2,
+    title: "Atomic Habits",
+    author: "James Clear",
+    category: "Self Help",
+    price: 699,
+    image: "https://m.media-amazon.com/images/I/91bYsX41DVL.jpg",
+  },
+  {
+    id: 3,
+    title: "Rich Dad Poor Dad",
+    author: "Robert Kiyosaki",
+    category: "Business",
+    price: 550,
+    image: "https://m.media-amazon.com/images/I/81bsw6fnUiL.jpg",
+  },
+  {
+    id: 4,
+    title: "Think and Grow Rich",
+    author: "Napoleon Hill",
+    category: "Business",
+    price: 450,
+    image: "https://m.media-amazon.com/images/I/71UypkUjStL.jpg",
+  },
+  {
+    id: 5,
+    title: "Ikigai",
+    author: "Hector Garcia",
+    category: "Self Help",
+    price: 399,
+    image: "https://m.media-amazon.com/images/I/81l3rZK4lnL.jpg",
+  },
+  {
+    id: 6,
+    title: "Deep Work",
+    author: "Cal Newport",
+    category: "Self Help",
+    price: 599,
+    image: "https://m.media-amazon.com/images/I/71QKQ9mwV7L.jpg",
+  },
+  {
+    id: 7,
+    title: "The Psychology of Money",
+    author: "Morgan Housel",
+    category: "Business",
+    price: 650,
+    image: "https://m.media-amazon.com/images/I/71TRUbzcvaL.jpg",
+  },
+  {
+    id: 8,
+    title: "The Power of Now",
+    author: "Eckhart Tolle",
+    category: "Self Help",
+    price: 499,
+    image: "https://m.media-amazon.com/images/I/61Ij8nLooNL.jpg",
+  },
+];
+
+export default books;
