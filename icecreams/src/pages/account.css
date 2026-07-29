@@ -1,0 +1,150 @@
+.account-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.4fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.account-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.account-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--gradient-primary);
+}
+
+.account-card h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+}
+
+.account-card .account-email {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+
+.account-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+  margin-top: 6px;
+}
+
+.account-edit-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.account-edit-form input {
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(106, 76, 147, 0.15);
+  background: var(--bg-cream);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: var(--text-dark);
+}
+
+.account-edit-form button {
+  margin-top: 4px;
+  justify-content: center;
+}
+
+.account-logout {
+  width: 100%;
+  margin-top: 18px;
+  justify-content: center;
+}
+
+.account-orders-block {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.account-orders-block h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-card {
+  border: 1px solid rgba(106, 76, 147, 0.12);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.order-card:last-child {
+  margin-bottom: 0;
+}
+
+.order-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.order-card-top strong {
+  font-size: 14px;
+}
+
+.order-card-top span {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.order-status {
+  background: var(--bg-pink-light);
+  color: var(--primary-pink);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.order-items-line {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.order-card-total {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@media (max-width: 860px) {
+  .account-layout { grid-template-columns: 1fr; }
+}
