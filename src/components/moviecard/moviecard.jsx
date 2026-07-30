@@ -1,34 +1,40 @@
 import "./MovieCard.css";
+import { useNavigate } from "react-router-dom";
 
 function MovieCard(props) {
+  const navigate = useNavigate();
 
-    return (
+  return (
+    <div className="movie-card">
+      <img src={props.image} alt={props.title} />
 
-        <div className="movie-card">
+      <div className="movie-info">
+        <h3>{props.title}</h3>
 
-            <img
-                src={props.image}
-                alt={props.title}
-            />
+        <p>
+          <strong>Genre:</strong> {props.genre}
+        </p>
 
-            <div className="movie-info">
+        <p>
+          <strong>Language:</strong> {props.language}
+        </p>
 
-                <h3>{props.title}</h3>
+        <p>
+          ⭐ {props.rating}/10
+        </p>
 
-                <p>{props.genre}</p>
+        <p>
+          ⏱ {props.duration}
+        </p>
 
-                <p>⭐ {props.rating}</p>
-
-                <p>{props.duration}</p>
-
-                <button>Book Now</button>
-
-            </div>
-
-        </div>
-
-    );
-
+        <button
+          onClick={() => navigate(`/movie/${props.id}`)}
+        >
+          Book Now
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default MovieCard;
