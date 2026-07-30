@@ -1,0 +1,42 @@
+/* Indoor Games Images */
+
+.news-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/* Card size */
+
+.news-card {
+    width: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+
+/* Cards layout */
+
+.news-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+
+/* Banner image */
+
+.main-news-image {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    padding: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

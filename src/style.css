@@ -1,0 +1,439 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0b0b0b;
+    color:white;
+}
+
+
+
+nav{
+    width:100%;
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 8%;
+    background:#111;
+}
+
+
+.logo{
+    color:white;
+    font-size:30px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+
+.logo i{
+    color:#00ff88;
+    margin-right:10px;
+}
+
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+
+.nav_link{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+
+.nav_link li a{
+
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+
+}
+
+
+.nav_link li a:hover{
+    color:#00ff88;
+}
+
+
+
+.search-image{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+
+.search-box{
+
+    background:white;
+    padding:8px 15px;
+    border-radius:20px;
+
+}
+
+
+.search-box input{
+
+    border:none;
+    outline:none;
+}
+
+
+.search-box i{
+    color:black;
+}
+
+
+
+.button a{
+
+    text-decoration:none;
+    color:white;
+    border:1px solid #00ff88;
+    padding:8px 15px;
+    margin:5px;
+    border-radius:20px;
+
+}
+
+
+.button a:hover{
+
+    background:#00ff88;
+    color:black;
+
+}
+
+
+
+.BarIcons{
+
+    display:none;
+    font-size:25px;
+
+}
+
+
+
+
+main{
+
+    height:600px;
+    background:
+
+    linear-gradient(
+    rgba(0,0,0,.6),
+    rgba(0,0,0,.8)
+    ),
+
+    url("./../images/sports-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+
+}
+
+
+.main-content{
+
+    width:80%;
+    margin:auto;
+
+}
+
+
+.main-heading{
+
+    max-width:600px;
+
+}
+
+
+.main-heading h1{
+
+    font-size:60px;
+    text-transform:capitalize;
+
+}
+
+
+.main-heading span{
+
+    color:#00ff88;
+
+}
+
+
+.main-heading p{
+
+    margin:20px 0;
+    line-height:1.7;
+    color:#ddd;
+
+}
+
+
+.main-heading button{
+
+    padding:14px 30px;
+    background:#00ff88;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+
+}
+
+
+.main-heading button:hover{
+
+    background:white;
+
+}
+
+
+
+
+
+.partners{
+
+    padding:40px 8%;
+    background:#111;
+
+}
+
+
+.partners-1,
+.partners-2{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    margin:30px 0;
+
+}
+
+
+.partners img{
+
+    width:120px;
+    height:60px;
+    object-fit:contain;
+    background:white;
+    padding:10px;
+    border-radius:10px;
+
+}
+
+
+
+
+
+footer{
+
+    background:#050505;
+    padding:50px 8% 20px;
+
+}
+
+
+.col-1 h1{
+
+    margin-bottom:20px;
+
+}
+
+
+.icons{
+
+    display:flex;
+    gap:20px;
+
+}
+
+
+.icons i{
+
+    font-size:30px;
+    cursor:pointer;
+
+}
+
+
+.icons i:hover{
+
+    color:#00ff88;
+
+}
+
+
+.col-2{
+
+    display:flex;
+    justify-content:space-between;
+    margin-top:40px;
+
+}
+
+
+.list h2{
+
+    margin-bottom:20px;
+
+}
+
+
+.list ul{
+
+    list-style:none;
+
+}
+
+
+.list ul li{
+
+    margin:10px 0;
+    color:#ccc;
+
+}
+
+
+.footer-bottom{
+
+    margin-top:40px;
+    text-align:center;
+    border-top:1px solid #333;
+    padding-top:20px;
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+
+nav{
+
+    padding:0 5%;
+
+}
+
+
+.menu{
+
+    position:absolute;
+    top:80px;
+    left:0;
+    width:100%;
+    background:#111;
+    flex-direction:column;
+    padding:30px;
+    display:none;
+
+}
+
+
+.menu.active{
+
+    display:flex;
+
+}
+
+
+.nav_link{
+
+    flex-direction:column;
+
+}
+
+
+.BarIcons{
+
+    display:flex;
+    gap:20px;
+
+}
+
+
+
+.main-heading h1{
+
+    font-size:40px;
+
+}
+
+
+.col-2{
+
+    flex-direction:column;
+    gap:30px;
+
+}
+
+
+
+.partners-1,
+.partners-2{
+
+    flex-wrap:wrap;
+
+}
+
+}
+
+
+.main-news-image{
+
+height:350px;
+border-radius:15px;
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:40px;
+margin-bottom:40px;
+background-position:center;
+background-size:cover;
+
+}
+
+.indoor-btn {
+    background: #0c0c0c;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.indoor-btn:hover {
+    background: #181817;
+    transform: scale(1.05);
+}
+
+.indoor-btn:active {
+    transform: scale(0.95);
+}
+
+a {
+    text-decoration: none;
+}
