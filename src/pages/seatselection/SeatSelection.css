@@ -1,0 +1,49 @@
+.date-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin:40px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.date-btn{
+
+    background:#1f1f1f;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 25px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.date-btn:hover{
+
+    background:#E50914;
+
+}
+
+.active{
+
+    background:#E50914;
+
+}
+
+.date-btn h3{
+
+    margin-bottom:5px;
+
+}

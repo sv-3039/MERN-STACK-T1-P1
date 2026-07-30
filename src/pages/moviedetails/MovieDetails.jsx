@@ -1,11 +1,12 @@
 import "./MovieDetails.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import movies from "../../data/movies";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 
 function MovieDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const movie = movies.find((item) => item.id === Number(id));
 
@@ -53,11 +54,12 @@ function MovieDetails() {
             <strong>👥 Cast :</strong> {movie.cast}
           </p>
 
-          <p className="description">
-            {movie.description}
-          </p>
+          <p className="description">{movie.description}</p>
 
-          <button className="book-btn">
+          <button
+            className="book-btn"
+            onClick={() => navigate(`/movie/${movie.id}/theatres`)}
+          >
             Select Theatre
           </button>
         </div>
