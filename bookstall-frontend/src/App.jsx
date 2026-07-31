@@ -4,54 +4,75 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 
 import Home from "./pages/Home";
-import BookDetails from "./pages/BookDetails";
-import Cart from "./pages/Cart";
-import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Wishlist from "./pages/Wishlist";
+import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import BookDetails from "./pages/BookDetails";
+import Settings from "./pages/Settings";
+import Orders from "./pages/Orders";
+import OrderSuccess from "./pages/OrderSuccess";
 
 function App() {
   const [search, setSearch] = useState("");
 
   return (
     <>
-      <Navbar search={search} setSearch={setSearch} />
+      <Navbar
+        search={search}
+        setSearch={setSearch}
+      />
 
       <Routes>
-        {/* Home */}
         <Route
           path="/"
           element={<Home search={search} />}
         />
 
-        {/* Book Details */}
-        <Route
-          path="/book/:id"
-          element={<BookDetails />}
-        />
-
-        {/* Cart */}
-        <Route
-          path="/cart"
-          element={<Cart />}
-        />
-
-        {/* Wishlist */}
-        <Route
-          path="/wishlist"
-          element={<Wishlist />}
-        />
-
-        {/* Login */}
         <Route
           path="/login"
           element={<Login />}
         />
 
-        {/* Checkout */}
+        <Route
+          path="/profile"
+          element={<Profile />}
+        />
+
+        <Route
+          path="/wishlist"
+          element={<Wishlist />}
+        />
+
+        <Route
+          path="/cart"
+          element={<Cart />}
+        />
+
         <Route
           path="/checkout"
           element={<Checkout />}
+        />
+
+        <Route
+          path="/book/:id"
+          element={<BookDetails />}
+        />
+
+        <Route
+          path="/settings"
+          element={<Settings />}
+        />
+
+        <Route
+          path="/orders"
+          element={<Orders />}
+        />
+
+        <Route
+          path="/order-success"
+          element={<OrderSuccess />}
         />
       </Routes>
     </>

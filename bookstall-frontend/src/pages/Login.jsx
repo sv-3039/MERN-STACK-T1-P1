@@ -17,43 +17,51 @@ function Login() {
       return;
     }
 
-    // Save user in AuthContext
+    // Save logged in user
     login({
       name: "Pavani",
       email,
     });
 
-    alert("Login Successful");
-
-    // Go back to Home page
-    navigate("/");
+    // Redirect to Profile page
+    navigate("/profile");
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: "400px" }}>
-      <h2 className="mb-4 text-center">Login</h2>
+    <div className="container mt-5" style={{ maxWidth: "450px" }}>
+      <div className="card shadow p-4">
+        <h2 className="text-center mb-4">Login</h2>
 
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          className="form-control mb-3"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form onSubmit={handleLogin}>
+          <div className="mb-3">
+            <label className="form-label">Email Address</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <input
-          type="password"
-          className="form-control mb-3"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <div className="mb-4">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-        <button type="submit" className="btn btn-warning w-100">
-          Login
-        </button>
-      </form>
+          <button type="submit" className="btn btn-warning w-100">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

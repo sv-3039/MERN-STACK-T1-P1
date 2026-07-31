@@ -80,20 +80,30 @@ function Navbar({ search, setSearch }) {
             )}
           </Link>
 
-          {/* Login / Logout */}
+          {/* Login / Profile */}
           {user ? (
-            <button
-              className="btn btn-danger"
-              onClick={logout}
-            >
-              Logout
-            </button>
+            <>
+              <Link
+                to="/profile"
+                className="btn btn-info"
+              >
+                <FaUserCircle className="me-2" />
+                {user.name}
+              </Link>
+
+              <button
+                className="btn btn-danger"
+                onClick={logout}
+              >
+                Logout
+              </button>
+            </>
           ) : (
             <Link
               to="/login"
               className="btn btn-warning"
             >
-              <FaUserCircle className="me-1" />
+              <FaUserCircle className="me-2" />
               Login
             </Link>
           )}
