@@ -437,3 +437,122 @@ background-size:cover;
 a {
     text-decoration: none;
 }
+
+
+
+
+.store-section {
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 50px;
+  border-radius: 12px;
+}
+
+.store-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.store-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.store-desc {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.store-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.store-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.store-btn.primary {
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+}
+
+.store-btn.secondary {
+  background: transparent;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+}
+
+.store-btn:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+
+/* Outdoor Store Section */
+.store-section {
+  background: linear-gradient(135deg, #004d40, #00796b);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 50px;
+  border-radius: 12px;
+}
+
+.store-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #ffeb3b;
+}
+
+.store-desc {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.store-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.store-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.store-btn.primary {
+  background: #ffeb3b;
+  color: #000;
+  font-weight: bold;
+}
+
+.store-btn.secondary {
+  background: transparent;
+  border: 2px solid #ffeb3b;
+  color: #ffeb3b;
+}
+
+.store-btn:hover {
+  transform: scale(1.05);
+}

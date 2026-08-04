@@ -6,43 +6,41 @@ import Home from "./components/Home";
 import Partners from "./components/Partners";
 import Footer from "./components/Footer";
 import IndoorGames from "./components/IndoorGames";
+import OutdoorGames from "./components/OutdoorGames";
 
+function App() {
+  return (
+    <BrowserRouter>
 
-function App(){
+      <Navbar />
 
-return(
+      <Routes>
 
-<BrowserRouter>
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <Partners />
+              <Footer />
+            </>
+          }
+        />
 
-<Navbar/>
+        <Route
+          path="/indoor-games"
+          element={<IndoorGames />}
+        />
 
-<Routes>
+        <Route
+          path="/outdoor-games"
+          element={<OutdoorGames />}
+        />
 
-<Route 
-path="/" 
-element={
-<>
-<Home/>
-<Partners/>
-<Footer/>
-</>
-}
-/>
+      </Routes>
 
-
-<Route 
-path="/indoor-games" 
-element={<IndoorGames/>}
-/>
-
-
-</Routes>
-
-
-</BrowserRouter>
-
-)
-
+    </BrowserRouter>
+  );
 }
 
 export default App;
