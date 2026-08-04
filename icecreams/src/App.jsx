@@ -3,8 +3,14 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import BackToTop from './components/BackToTop/BackToTop';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Home from './pages/Home';
 import Products from './pages/Products';
+import IceCreams from './pages/IceCreams';
+import Cakes from './pages/Cakes';
+import Chocolates from './pages/Chocolates';
+import ColdBrews from './pages/ColdBrews';
+import ProductDetails from './pages/ProductDetails';
 import OffersPage from './pages/OffersPage';
 import CombosPage from './pages/CombosPage';
 import BrandsPage from './pages/BrandsPage';
@@ -32,22 +38,29 @@ export default function App() {
       <ScrollToTop />
       <Navbar />
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/offers" element={<OffersPage />} />
-          <Route path="/combos" element={<CombosPage />} />
-          <Route path="/brands" element={<BrandsPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/ice-creams" element={<IceCreams />} />
+            <Route path="/cakes" element={<Cakes />} />
+            <Route path="/chocolates" element={<Chocolates />} />
+            <Route path="/cold-brews" element={<ColdBrews />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/offers" element={<OffersPage />} />
+            <Route path="/combos" element={<CombosPage />} />
+            <Route path="/brands" element={<BrandsPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </ErrorBoundary>
       </main>
       <Footer />
       <BackToTop />

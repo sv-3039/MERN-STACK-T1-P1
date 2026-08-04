@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiHeart, FiEye, FiShoppingCart, FiStar } from 'react-icons/fi';
 import { useCart } from '../../context/CartContext';
@@ -30,7 +31,9 @@ export default function ProductCard({ product, index = 0 }) {
           {product.isBestseller && !product.isNew && <span className="badge badge-best">Bestseller</span>}
           {discount > 0 && <span className="badge badge-discount">{discount}% OFF</span>}
 
-          <img src={product.image} alt={product.name} loading="lazy" />
+          <Link to={`/product/${product.id}`} className="pc-img-link">
+            <img src={product.image} alt={product.name} loading="lazy" />
+          </Link>
 
           {outOfStock && <div className="pc-oos">Out of Stock</div>}
 
@@ -49,7 +52,9 @@ export default function ProductCard({ product, index = 0 }) {
 
         <div className="pc-body">
           <p className="pc-brand">{product.brand}</p>
-          <h3 className="pc-name">{product.name}</h3>
+          <Link to={`/product/${product.id}`} className="pc-name-link">
+            <h3 className="pc-name">{product.name}</h3>
+          </Link>
 
           <div className="pc-rating">
             <FiStar className="star" />

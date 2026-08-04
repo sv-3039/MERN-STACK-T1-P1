@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiMinus, FiPlus, FiTrash2, FiShoppingBag, FiTag } from 'react-icons/fi';
+import { FiMinus, FiPlus, FiTrash2, FiShoppingBag, FiTag, FiX } from 'react-icons/fi';
 import PageHeader from '../components/common/PageHeader';
 import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
@@ -10,7 +10,7 @@ import './cart.css';
 const VALID_COUPONS = { SCOOP20: 0.2, WELCOME10: 0.1 };
 
 export default function Cart() {
-  const { items, removeFromCart, updateQty, subtotal, deliveryCharge, tax } = useCart();
+  const { items, removeFromCart, updateQty, clearCart, subtotal, deliveryCharge, tax } = useCart();
   const { showToast } = useToast();
   const navigate = useNavigate();
   const [coupon, setCoupon] = useState('');
@@ -49,6 +49,17 @@ export default function Cart() {
       <section className="section">
         <div className="container cart-layout">
           <div className="cart-items">
+            <div className="cart-items-head">
+              <button
+                className="cart-clear-btn"
+                onClick={() => {
+                  clearCart();
+                  showToast('Cart cleared', 'info');
+                }}
+              >
+                <FiX /> Clear Cart
+              </button>
+            </div>
             {items.map((item, i) => (
               <motion.div
                 key={item.id}

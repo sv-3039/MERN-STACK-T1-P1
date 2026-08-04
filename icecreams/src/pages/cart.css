@@ -173,3 +173,26 @@
   .cart-item-subtotal { grid-column: 3 / 4; }
   .cart-remove { grid-column: 1 / 2; }
 }
+
+.cart-items-head {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.cart-clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+}
+
+.cart-clear-btn:hover {
+  color: var(--primary-pink);
+  background: var(--bg-pink-light);
+}

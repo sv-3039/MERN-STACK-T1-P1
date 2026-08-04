@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiTag } from 'react-icons/fi';
+import heroImg from '../../assets/hero.jpg';
 import './hero.css';
 
 const floaters = [
@@ -77,7 +78,7 @@ export default function Hero() {
         >
           <div className="hero-visual-glow" />
           <img
-            src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=800&q=80"
+            src={heroImg}
             alt="Premium ice cream cones"
           />
           <motion.div

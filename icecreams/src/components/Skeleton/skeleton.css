@@ -1,0 +1,40 @@
+.skeleton-block,
+.skeleton-img {
+  display: block;
+  background: linear-gradient(90deg, var(--bg-pink-light) 25%, var(--bg-white) 50%, var(--bg-pink-light) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.pd-skeleton {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding: 48px 0;
+}
+
+.pd-skeleton-info {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (max-width: 860px) {
+  .pd-skeleton {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,10 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { FiFilter, FiX } from 'react-icons/fi';
+import { FiFilter, FiX, FiGrid, FiList } from 'react-icons/fi';
 import PageHeader from '../components/common/PageHeader';
 import ProductCard from '../components/ProductCard/ProductCard';
+import Pagination from '../components/common/Pagination';
+import { ProductGridSkeleton } from '../components/Skeleton/Skeleton';
+import usePagination from '../hooks/usePagination';
 import { products, categories, brands } from '../data/products';
 import './products.css';
+
+const PAGE_SIZE = 12;
 
 const flavorList = [...new Set(products.map((p) => p.flavor))];
 
@@ -12,14 +17,26 @@ export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.get('category') || '';
   const highlight = searchParams.get('highlight');
+  const searchTerm = (searchParams.get('search') || '').toLowerCase();
 
   const [category, setCategory] = useState(initialCategory);
   const [brand, setBrand] = useState('');
   const [flavor, setFlavor] = useState('');
   const [maxPrice, setMaxPrice] = useState(400);
   const [minRating, setMinRating] = useState(0);
+  const [stockOnly, setStockOnly] = useState(false);
   const [sort, setSort] = useState('popularity');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [viewMode, setViewMode] = useState('paginated'); // 'paginated' | 'infinite'
+  const [loading, setLoading] = useState(true);
+
+  // Simulated network delay so the skeleton grid actually has work to do.
+  useEffect(() => {
+    setLoading(true);
+    const t = setTimeout(() => setLoading(false), 400);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, brand, flavor, maxPrice, minRating, stockOnly, sort, searchTerm]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -33,6 +50,11 @@ export default function Products() {
       if (flavor && p.flavor !== flavor) return false;
       if (p.price > maxPrice) return false;
       if (Number(p.rating) < minRating) return false;
+      if (stockOnly && p.stock === 0) return false;
+      if (searchTerm) {
+        const hay = `${p.name} ${p.brand} ${p.flavor}`.toLowerCase();
+        if (!hay.includes(searchTerm)) return false;
+      }
       return true;
     });
 
@@ -49,7 +71,12 @@ export default function Products() {
       }
     }
     return list;
-  }, [category, brand, flavor, maxPrice, minRating, sort, highlight]);
+  }, [category, brand, flavor, maxPrice, minRating, stockOnly, sort, highlight, searchTerm]);
+
+  const { page, totalPages, goToPage, pageItems, infiniteItems, hasMore, loadMore } =
+    usePagination(filtered, PAGE_SIZE);
+
+  const visibleItems = viewMode === 'paginated' ? pageItems : infiniteItems;
 
   const clearFilters = () => {
     setCategory('');
@@ -57,6 +84,7 @@ export default function Products() {
     setFlavor('');
     setMaxPrice(400);
     setMinRating(0);
+    setStockOnly(false);
     setSearchParams({});
   };
 
@@ -124,6 +152,13 @@ export default function Products() {
           ))}
         </div>
       </div>
+
+      <div className="filter-group">
+        <label className="filter-checkbox">
+          <input type="checkbox" checked={stockOnly} onChange={(e) => setStockOnly(e.target.checked)} />
+          In Stock Only
+        </label>
+      </div>
     </div>
   );
 
@@ -145,6 +180,24 @@ export default function Products() {
                 <FiFilter /> Filters
               </button>
               <p className="products-count">{filtered.length} products</p>
+              <div className="view-mode-toggle" role="group" aria-label="View mode">
+                <button
+                  className={viewMode === 'paginated' ? 'active' : ''}
+                  onClick={() => setViewMode('paginated')}
+                  aria-label="Paginated view"
+                  title="Page numbers"
+                >
+                  <FiGrid />
+                </button>
+                <button
+                  className={viewMode === 'infinite' ? 'active' : ''}
+                  onClick={() => setViewMode('infinite')}
+                  aria-label="Infinite scroll view"
+                  title="Infinite scroll"
+                >
+                  <FiList />
+                </button>
+              </div>
               <select value={sort} onChange={(e) => setSort(e.target.value)} className="filter-select sort-select">
                 <option value="popularity">Sort: Popularity</option>
                 <option value="priceLow">Price: Low to High</option>
@@ -154,17 +207,36 @@ export default function Products() {
               </select>
             </div>
 
-            {filtered.length === 0 ? (
+            {loading ? (
+              <ProductGridSkeleton count={8} />
+            ) : filtered.length === 0 ? (
               <div className="products-empty">
-                <p>No ice creams match your filters. Try adjusting them.</p>
+                <p>
+                  {searchTerm
+                    ? `No results for "${searchParams.get('search')}". Try adjusting your search or filters.`
+                    : 'No ice creams match your filters. Try adjusting them.'}
+                </p>
                 <button className="btn btn-primary" onClick={clearFilters}>Clear Filters</button>
               </div>
             ) : (
-              <div className="products-grid">
-                {filtered.map((p, i) => (
-                  <ProductCard key={p.id} product={p} index={i} />
-                ))}
-              </div>
+              <>
+                <div className="products-grid">
+                  {visibleItems.map((p, i) => (
+                    <ProductCard key={p.id} product={p} index={i} />
+                  ))}
+                </div>
+
+                {viewMode === 'paginated' ? (
+                  <Pagination page={page} totalPages={totalPages} onChange={goToPage} />
+                ) : (
+                  hasMore && (
+                    <div className="load-more-wrap">
+                      <p>Showing {infiniteItems.length} of {filtered.length}</p>
+                      <button className="btn btn-outline" onClick={loadMore}>Load More</button>
+                    </div>
+                  )
+                )}
+              </>
             )}
           </div>
         </div>

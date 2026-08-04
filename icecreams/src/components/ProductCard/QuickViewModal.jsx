@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { FiX, FiStar, FiShoppingCart } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiX, FiStar, FiShoppingCart, FiArrowRight } from 'react-icons/fi';
 import { useCart } from '../../context/CartContext';
 
 export default function QuickViewModal({ product, open, onClose }) {
@@ -43,6 +44,14 @@ export default function QuickViewModal({ product, open, onClose }) {
               <button className="btn btn-primary btn-ripple" style={{ width: '100%' }} onClick={() => { addToCart(product); onClose(); }}>
                 <FiShoppingCart /> Add to Cart
               </button>
+              <Link
+                to={`/product/${product.id}`}
+                className="btn btn-outline"
+                style={{ width: '100%', marginTop: 10, justifyContent: 'center' }}
+                onClick={onClose}
+              >
+                View Full Details <FiArrowRight />
+              </Link>
             </div>
           </motion.div>
         </motion.div>

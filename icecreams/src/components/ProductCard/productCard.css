@@ -231,3 +231,17 @@
 @media (max-width: 640px) {
   .qv-panel { grid-template-columns: 1fr; overflow-y: auto; }
 }
+
+.pc-img-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pc-name-link {
+  display: block;
+}
+
+.pc-name-link:hover .pc-name {
+  color: var(--primary-pink);
+}

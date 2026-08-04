@@ -103,6 +103,46 @@
   max-width: 220px;
 }
 
+.view-mode-toggle {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-white);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  box-shadow: var(--shadow-soft);
+}
+
+.view-mode-toggle button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.view-mode-toggle button.active {
+  background: var(--gradient-primary);
+  color: #fff;
+}
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-checkbox input {
+  accent-color: var(--primary-pink);
+  width: 16px;
+  height: 16px;
+}
+
 .mobile-filter-btn {
   display: none;
   align-items: center;
