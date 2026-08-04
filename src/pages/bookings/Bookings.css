@@ -1,0 +1,31 @@
+.bookings-page{
+    min-height:100vh;
+    background:#121212;
+    color:white;
+    padding:40px;
+}
+
+.bookings-page h1{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.booking-card{
+
+    max-width:600px;
+
+    margin:20px auto;
+
+    background:#1f1f1f;
+
+    padding:25px;
+
+    border-radius:12px;
+
+}
+
+.booking-card p{
+
+    margin:10px 0;
+
+}

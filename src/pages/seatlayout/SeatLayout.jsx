@@ -1,12 +1,14 @@
 import "./SeatLayout.css";
 import Navbar from "../../components/navbar/Navbar";
-import { useParams } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 import seats from "../../data/seats";
 
-
 function SeatLayout() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const booking = location.state;
   const [selectedSeats, setSelectedSeats] = useState([]);
   const ticketPrice = 250;
   const totalAmount = selectedSeats.length * ticketPrice;
@@ -14,9 +16,7 @@ function SeatLayout() {
     if (seat.booked) return;
 
     if (selectedSeats.includes(seat.seatNo)) {
-      setSelectedSeats(
-        selectedSeats.filter((item) => item !== seat.seatNo)
-      );
+      setSelectedSeats(selectedSeats.filter((item) => item !== seat.seatNo));
     } else {
       setSelectedSeats([...selectedSeats, seat.seatNo]);
     }
@@ -30,10 +30,27 @@ function SeatLayout() {
         <h1>Select Your Seats</h1>
 
         <p className="movie-id">Movie ID : {id}</p>
+        <div className="booking-details">
+          <h2>Booking Details</h2>
 
-        <div className="screen">
-          SCREEN
+          <p>
+            <strong>Theatre:</strong> {booking?.theatre}
+          </p>
+
+          <p>
+            <strong>Location:</strong> {booking?.location}
+          </p>
+
+          <p>
+            <strong>Date:</strong> {booking?.date?.day} {booking?.date?.date}
+          </p>
+
+          <p>
+            <strong>Show Time:</strong> {booking?.time}
+          </p>
         </div>
+
+        <div className="screen">SCREEN</div>
 
         <div className="seat-grid">
           {seats.map((seat) => (
@@ -68,40 +85,39 @@ function SeatLayout() {
         </div>
 
         <div className="selected-info">
+          <h2>Booking Summary</h2>
 
-  <h2>Booking Summary</h2>
+          <p>
+            <strong>Selected Seats:</strong>{" "}
+            {selectedSeats.length > 0 ? selectedSeats.join(", ") : "None"}
+          </p>
 
-  <p>
-    <strong>Selected Seats:</strong>
-    {" "}
-    {selectedSeats.length > 0
-      ? selectedSeats.join(", ")
-      : "None"}
-  </p>
+          <p>
+            <strong>Number of Seats:</strong> {selectedSeats.length}
+          </p>
 
-  <p>
-    <strong>Number of Seats:</strong>
-    {" "}
-    {selectedSeats.length}
-  </p>
+          <p>
+            <strong>Price Per Seat:</strong>₹{ticketPrice}
+          </p>
 
-  <p>
-    <strong>Price Per Seat:</strong>
-    ₹{ticketPrice}
-  </p>
+          <h3>Total Amount : ₹{totalAmount}</h3>
 
-  <h3>
-    Total Amount : ₹{totalAmount}
-  </h3>
-
-  <button
-    className="checkout-btn"
-    disabled={selectedSeats.length === 0}
-  >
-    Proceed to Checkout
-  </button>
-
-</div>
+<button
+  className="checkout-btn"
+  disabled={selectedSeats.length === 0}
+  onClick={() =>
+    navigate("/checkout", {
+      state: {
+        booking,
+        seats: selectedSeats,
+        totalAmount,
+      },
+    })
+  }
+>
+  Proceed to Checkout
+</button>
+        </div>
       </div>
     </>
   );

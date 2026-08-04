@@ -47,7 +47,17 @@ function SeatSelection() {
               {theatre.timings.map((time, index) => (
                 <button
                   key={index}
-                  onClick={() => navigate(`/movie/${id}/seats`)}
+                  onClick={() =>
+                    navigate(`/movie/${id}/seats`, {
+                      state: {
+                        movieId: id,
+                        theatre: theatre.name,
+                        location: theatre.location,
+                        date: selectedDate,
+                        time: time,
+                      },
+                    })
+                  }
                 >
                   {time}
                 </button>

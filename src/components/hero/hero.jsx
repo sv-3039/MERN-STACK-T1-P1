@@ -1,15 +1,17 @@
 import "./Hero.css";
 import heroImage from "../../assets/hero.png";
-
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+  const navigate = useNavigate();
+
   return (
     <section
       className="hero"
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className="overlay">
-        <p className="tag">NOW SHOWING</p>
+        <p className="tag">TRENDING MOVIE</p>
 
         <h1>Avengers: Endgame</h1>
 
@@ -29,9 +31,22 @@ function Hero() {
         </p>
 
         <div className="hero-buttons">
-          <button className="book-btn">Book Now</button>
+          <button
+            className="book-btn"
+            onClick={() => navigate("/movie/1")}
+          >
+            Book Now
+          </button>
 
-          <button className="trailer-btn">
+          <button
+            className="trailer-btn"
+            onClick={() =>
+              window.open(
+                "https://www.youtube.com/watch?v=TcMBFSGVi1c",
+                "_blank"
+              )
+            }
+          >
             Watch Trailer
           </button>
         </div>
