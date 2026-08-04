@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import IndoorGames from "./components/IndoorGames";
 import OutdoorGames from "./components/OutdoorGames";
 
+
 function App() {
   return (
     <BrowserRouter>

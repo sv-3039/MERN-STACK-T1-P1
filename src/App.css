@@ -1,64 +1,84 @@
-/* Indoor Games Images */
+/* ================= RESET ================= */
 
-.news-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-
-/* Card size */
-
-.news-card {
-    width: 300px;
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-
-/* Cards layout */
-
-.news-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    justify-content: center;
-}
-
-
-/* Banner image */
-
-.main-news-image {
-    height: 400px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 15px;
-    padding: 40px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Navbar */
+
+/* ================= INDOOR GAME IMAGES ================= */
+
+.news-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+/* ================= GAME CARD ================= */
+
+.news-card {
+  width: 300px;
+  background: white;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+}
+
+
+/* ================= CARDS LAYOUT ================= */
+
+.news-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  padding: 30px;
+}
+
+
+/* ================= BANNER IMAGE ================= */
+
+.main-news-image {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 40px;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-bottom: 30px;
+}
+
+
+/* ================= NAVBAR ================= */
+
 .navbar {
   width: 100%;
   height: 70px;
   background-color: #1e293b;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 0 50px;
 }
 
+
 /* Logo */
+
 .logo {
   color: white;
   font-size: 28px;
@@ -66,17 +86,21 @@
   text-decoration: none;
 }
 
+
 /* Navigation Links */
+
 .nav_link {
   display: flex;
   list-style: none;
   gap: 30px;
 }
 
+
 .nav_link li {
   display: flex;
   align-items: center;
 }
+
 
 .nav_link li a {
   text-decoration: none;
@@ -85,26 +109,66 @@
   transition: 0.3s;
 }
 
+
 .nav_link li a:hover {
   color: #38bdf8;
 }
 
-/* Right Buttons */
+
+/* ================= BUTTONS ================= */
+
 .button {
   display: flex;
   gap: 15px;
 }
 
+
 .button a {
   text-decoration: none;
   color: white;
+
   border: 2px solid white;
   padding: 8px 18px;
+
   border-radius: 6px;
   transition: 0.3s;
 }
 
+
 .button a:hover {
   background: white;
   color: #1e293b;
+}
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .navbar {
+    padding: 0 20px;
+    flex-direction: column;
+    height: auto;
+    gap: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+
+  .nav_link {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+
+  .news-card {
+    width: 90%;
+  }
+
+
+  .main-news-image {
+    height: 300px;
+    padding: 20px;
+  }
+
 }
