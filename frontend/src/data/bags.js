@@ -98,7 +98,7 @@ const bags = [
     id: 9,
     name: "Ladies Sling Bag",
     price: 12,
-    brand: "Lavie",
+    brand: "American Tourister",
     category:"Sling",
     rating:4.4,
      discount: "30% OFF",

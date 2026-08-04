@@ -10,7 +10,7 @@ function Navbar({ cart, removeFromCart }) {
         <h2>👜 Mall Store</h2>
 
         <ul>
-          
+          <li>Home</li>
 
           <li onClick={() => setShowCart(!showCart)}>
             🛒 Cart ({cart.length})
@@ -26,6 +26,7 @@ function Navbar({ cart, removeFromCart }) {
   <p>Your cart is empty.</p>
 ) : (
   <>
+  
     {cart.map((item, index) => (
       <div className="cart-item" key={index}>
         <img src={item.image} alt={item.name} />
