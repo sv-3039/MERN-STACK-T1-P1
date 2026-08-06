@@ -1,0 +1,302 @@
+/* ============================
+   Offers Page — Scoped Styles
+   Prefix: .offers-  (avoids conflicts with global layout)
+============================ */
+.offers-page {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+}
+
+/* ============================
+   1. HERO PROMO BANNER
+============================ */
+.offers-hero {
+  background: linear-gradient(135deg, #e91e63 0%, #c2185b 45%, #880e4f 100%);
+  border-radius: 20px;
+  padding: 60px 30px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(233, 30, 99, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative floating circles */
+.offers-hero::before,
+.offers-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+.offers-hero::before {
+  width: 220px;
+  height: 220px;
+  top: -60px;
+  left: -60px;
+}
+.offers-hero::after {
+  width: 180px;
+  height: 180px;
+  bottom: -50px;
+  right: -50px;
+}
+
+.offers-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.offers-hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.offers-hero-title {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.offers-hero-subtitle {
+  font-size: 18px;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+/* Countdown timer */
+.offers-countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.offers-countdown-box {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  padding: 12px 18px;
+  min-width: 80px;
+  backdrop-filter: blur(4px);
+}
+
+.offers-countdown-value {
+  display: block;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.offers-countdown-label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 6px;
+  opacity: 0.9;
+}
+
+.offers-countdown-colon {
+  font-size: 32px;
+  font-weight: 800;
+  animation: offers-blink 1s infinite;
+}
+
+@keyframes offers-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.offers-hero-end {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ============================
+   2. QUICK FILTER CHIPS
+============================ */
+.offers-filters {
+  margin: 30px 0;
+}
+
+.offers-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.offers-chip {
+  width: auto;
+  padding: 10px 24px;
+  border: 2px solid #f3c6d4;
+  background: #fff;
+  color: #e91e63;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.offers-chip:hover {
+  border-color: #e91e63;
+  background: #fce4ec;
+}
+
+.offers-chip-active {
+  background: #e91e63;
+  border-color: #e91e63;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.35);
+}
+
+/* ============================
+   3. COUPON CODE CARDS
+============================ */
+.offers-section-title {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #e91e63;
+  position: relative;
+}
+
+.offers-section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #e91e63;
+  margin: 10px auto 0;
+  border-radius: 3px;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.offers-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #fce4ec;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offers-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(233, 30, 99, 0.18);
+}
+
+.offers-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #e91e63, #c2185b);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.offers-card-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.offers-card-desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.offers-min-spend {
+  font-size: 13px;
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+/* Dashed-border promo code box */
+.offers-code-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 2px dashed #e91e63;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff5f8;
+}
+
+.offers-code {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #c2185b;
+}
+
+.offers-copy-btn {
+  width: auto;
+  padding: 8px 16px;
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.offers-copy-btn:hover {
+  background: #c2185b;
+  transform: scale(1.04);
+}
+
+/* ============================
+   Responsive
+============================ */
+@media (max-width: 600px) {
+  .offers-hero {
+    padding: 40px 20px;
+  }
+  .offers-hero-title {
+    font-size: 28px;
+  }
+  .offers-hero-subtitle {
+    font-size: 15px;
+  }
+  .offers-countdown-box {
+    min-width: 60px;
+    padding: 10px 12px;
+  }
+  .offers-countdown-value {
+    font-size: 24px;
+  }
+  .offers-chip {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}

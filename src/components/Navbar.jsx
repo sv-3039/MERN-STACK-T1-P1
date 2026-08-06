@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Navbar.css";
 
-function Navbar({ cart, setShowCart, setShowAbout }) {
+function Navbar({ cart, setShowCart, setShowAbout, setShowOffers }) {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -10,19 +10,30 @@ function Navbar({ cart, setShowCart, setShowAbout }) {
     e.preventDefault();
     setShowCart(false);
     setShowAbout(false);
+    setShowOffers(false);
   };
 
   const goAbout = (e) => {
     e.preventDefault();
     setShowCart(false);
     setShowAbout(true);
+    setShowOffers(false);
   };
 
   // NEW FUNCTION: This ensures we go to the home view, but ALLOWS the browser to scroll down to the ID
   const handleCategoryClick = () => {
     setShowCart(false);
     setShowAbout(false);
+    setShowOffers(false);
     setShowDropdown(false); // Closes the menu after clicking
+  };
+
+  // NEW FUNCTION: Opens the Offers page
+  const goOffers = (e) => {
+    e.preventDefault();
+    setShowCart(false);
+    setShowAbout(false);
+    setShowOffers(true);
   };
 
   return (
@@ -56,11 +67,11 @@ function Navbar({ cart, setShowCart, setShowAbout }) {
           )}
         </li>
 
-        <li><a href="#">Offers</a></li>
+        <li><a href="#" onClick={goOffers}>Offers</a></li>
         <li><a href="#" onClick={goAbout}>About</a></li>
       </ul>
 
-      <div className="cart" onClick={() => { setShowCart(true); setShowAbout(false); }}>
+      <div className="cart" onClick={() => { setShowCart(true); setShowAbout(false); setShowOffers(false); }}>
         🛒 Cart ({totalItems})
       </div>
     </nav>

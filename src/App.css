@@ -128,6 +128,112 @@ button:hover {
   margin-top: 15px;
 }
 
+/* ============================
+   Order Summary Mini Receipt
+============================ */
+.order-summary-box {
+  background: #f9f9f9;
+  border: 1px solid #f0e0e5;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 14px;
+  color: #555;
+  padding: 4px 0;
+}
+
+.order-summary-items {
+  text-align: right;
+  color: #333;
+}
+
+.order-discount-row {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.order-final-row {
+  border-top: 1px dashed #ddd;
+  margin-top: 6px;
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #e91e63;
+}
+
+/* ============================
+   Order Form Inputs
+============================ */
+.order-box .order-input,
+.order-box .order-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-box .order-input:focus,
+.order-box .order-textarea:focus {
+  border-color: #e91e63;
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.15);
+}
+
+.order-box .order-textarea {
+  height: 100px;
+  resize: none;
+}
+
+/* ============================
+   Order Buttons Hierarchy
+============================ */
+.place-order-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  background: #e91e63;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.place-order-btn:hover {
+  background: #c2185b;
+}
+
+.back-order-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 2px solid #e91e63;
+  background: #fff;
+  color: #e91e63;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-order-btn:hover {
+  background: #fce4ec;
+}
+
 /* Specific styling for the Cart controls to prevent them from taking 100% width */
 .qty-btn {
   width: 30px;
@@ -249,6 +355,86 @@ button:hover {
   border-top: 2px solid #eee;
   padding-top: 25px;
   text-align: right;
+}
+
+/* ============================
+   Coupon Section (Cart)
+============================ */
+.coupon-section {
+  margin-bottom: 20px;
+}
+
+.coupon-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.coupon-input {
+  width: 220px;
+  max-width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.coupon-input:focus {
+  border-color: #e91e63;
+}
+
+.coupon-apply-btn {
+  width: auto;
+  padding: 12px 24px;
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.coupon-apply-btn:hover {
+  background: #c2185b;
+}
+
+.coupon-message {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.coupon-message.success {
+  color: #2e7d32;
+}
+
+.coupon-message.error {
+  color: #d32f2f;
+}
+
+.coupon-discount {
+  margin-top: 10px;
+  color: #2e7d32;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .coupon-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .coupon-input {
+    width: 100%;
+  }
+  .coupon-apply-btn {
+    width: 100%;
+  }
 }
 
 .cart-summary h3 {
