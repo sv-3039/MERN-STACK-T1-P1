@@ -27,7 +27,15 @@ export default function SimpleProductGrid({ eyebrow, title, sub, items, bg }) {
               whileHover={{ y: -5 }}
             >
               <div className="spg-img">
-                <img src={it.image} alt={it.name} loading="lazy" />
+                <img
+                  src={it.image}
+                  alt={it.name}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.src =
+                      'https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=600&q=80';
+                  }}
+                />
               </div>
               <div className="spg-body">
                 <h4>{it.name}</h4>

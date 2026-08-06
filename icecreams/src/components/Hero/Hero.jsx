@@ -43,7 +43,7 @@ export default function Hero() {
           </h1>
           <p className="hero-sub">
             Premium Ice Creams, Sundaes, Gelatos &amp; Family Packs — crafted by India's
-            most loved brands, delivered straight to your door.
+            most loved brands, freshly served at our Mall Express Counter.
           </p>
           <div className="hero-actions">
             <Link to="/products" className="btn btn-primary btn-ripple">

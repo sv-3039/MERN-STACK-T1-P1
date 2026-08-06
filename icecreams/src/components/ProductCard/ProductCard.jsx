@@ -32,7 +32,15 @@ export default function ProductCard({ product, index = 0 }) {
           {discount > 0 && <span className="badge badge-discount">{discount}% OFF</span>}
 
           <Link to={`/product/${product.id}`} className="pc-img-link">
-            <img src={product.image} alt={product.name} loading="lazy" />
+            <img
+              src={product.image}
+              alt={product.name}
+              loading="lazy"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80';
+              }}
+            />
           </Link>
 
           {outOfStock && <div className="pc-oos">Out of Stock</div>}
@@ -64,7 +72,7 @@ export default function ProductCard({ product, index = 0 }) {
 
           <div className="pc-price-row">
             <span className="pc-price">₹{product.price}</span>
-            {product.mrp && <span className="pc-mrp">₹{product.mrp}</span>}
+            {product.mrp > product.price && <span className="pc-mrp">₹{product.mrp}</span>}
           </div>
 
           <button

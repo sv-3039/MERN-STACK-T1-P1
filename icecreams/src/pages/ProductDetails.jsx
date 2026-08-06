@@ -6,7 +6,7 @@ import {
   FiShare2,
   FiShoppingCart,
   FiStar,
-  FiTruck,
+  FiClock,
   FiCheckCircle,
   FiXCircle,
   FiMinus,
@@ -68,11 +68,18 @@ export default function ProductDetails() {
     );
   }
 
-  const gallery = [
-    product.image,
-    `${product.image}&sat=-20`,
-    `${product.image}&sat=20`,
-  ];
+  // The "sat" query trick only works on remote Unsplash URLs — local
+  // images (served from src/assets/images via the image hub) don't accept
+  // query-string edits, so we just reuse the single real photo for those.
+  const gallery = useMemo(() => {
+    if (!product) return [];
+    if (product.gallery) return product.gallery;
+    const extraImgs = products
+      .filter((p) => (p.brandId === product.brandId || p.category === product.category) && p.id !== product.id && p.image !== product.image)
+      .slice(0, 2)
+      .map((p) => p.image);
+    return [product.image, ...extraImgs];
+  }, [product]);
 
   const outOfStock = product.stock === 0;
   const lowStock = !outOfStock && product.stock <= 5;
@@ -145,18 +152,20 @@ export default function ProductDetails() {
                 />
               )}
             </div>
-            <div className="pd-thumbs">
-              {gallery.map((src, i) => (
-                <button
-                  key={i}
-                  className={`pd-thumb ${activeImg === i ? 'active' : ''}`}
-                  onClick={() => setActiveImg(i)}
-                  aria-label={`View image ${i + 1}`}
-                >
-                  <img src={src} alt="" />
-                </button>
-              ))}
-            </div>
+            {gallery.length > 1 && (
+              <div className="pd-thumbs">
+                {gallery.map((src, i) => (
+                  <button
+                    key={i}
+                    className={`pd-thumb ${activeImg === i ? 'active' : ''}`}
+                    onClick={() => setActiveImg(i)}
+                    aria-label={`View image ${i + 1}`}
+                  >
+                    <img src={src} alt="" />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* ---------- Info ---------- */}
@@ -198,7 +207,7 @@ export default function ProductDetails() {
               ) : (
                 <span className="pd-stock in"><FiCheckCircle /> In Stock</span>
               )}
-              <span className="pd-delivery"><FiTruck /> Delivery in {deliveryDays}-{deliveryDays + 2} days</span>
+              <span className="pd-delivery"><FiClock /> Express Mall Counter Pickup (Ready in 5-10 mins)</span>
             </div>
 
             <div className="pd-qty-row">

@@ -1,23 +1,13 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useToast } from './ToastContext';
 
 const WishlistContext = createContext();
 
 export function WishlistProvider({ children }) {
-  const [items, setItems] = useState(() => {
-    try {
-      const saved = localStorage.getItem('scoopco_wishlist');
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
-  });
+  const [items, setItems] = useLocalStorage('scoopco_wishlist', []);
   const { showToast } = useToast();
-
-  useEffect(() => {
-    localStorage.setItem('scoopco_wishlist', JSON.stringify(items));
-  }, [items]);
 
   const isWishlisted = (id) => items.some((i) => i.id === id);
 

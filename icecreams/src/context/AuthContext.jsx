@@ -1,44 +1,34 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useToast } from './ToastContext';
 
 const AuthContext = createContext();
 
+// NOTE: This is a client-only demo auth system — accounts, orders and
+// passwords all live in the browser's localStorage with no hashing or
+// server verification. That's fine for prototyping, but before this is
+// used with real customers, move signup/login to a real backend with
+// hashed passwords (e.g. bcrypt) and server-issued sessions/JWTs.
 const USERS_KEY = 'scoopco_users';
 const SESSION_KEY = 'scoopco_session';
 const ORDERS_KEY = 'scoopco_orders';
 
-const readJSON = (key, fallback) => {
-  try {
-    const saved = localStorage.getItem(key);
-    return saved ? JSON.parse(saved) : fallback;
-  } catch {
-    return fallback;
-  }
-};
-
 export function AuthProvider({ children }) {
-  const [users, setUsers] = useState(() => readJSON(USERS_KEY, []));
-  const [user, setUser] = useState(() => {
-    const email = localStorage.getItem(SESSION_KEY);
-    if (!email) return null;
-    const found = readJSON(USERS_KEY, []).find((u) => u.email === email);
-    return found ? { name: found.name, email: found.email, phone: found.phone || '' } : null;
-  });
-  const [orders, setOrders] = useState(() => readJSON(ORDERS_KEY, {}));
+  const [users, setUsers] = useLocalStorage(USERS_KEY, []);
+  const [sessionEmail, setSessionEmail] = useLocalStorage(SESSION_KEY, null);
+  const [orders, setOrders] = useLocalStorage(ORDERS_KEY, {});
   const { showToast } = useToast();
 
-  useEffect(() => {
-    localStorage.setItem(USERS_KEY, JSON.stringify(users));
-  }, [users]);
+  const [user, setUser] = useState(() => {
+    if (!sessionEmail) return null;
+    const found = users.find((u) => u.email === sessionEmail);
+    return found ? { name: found.name, email: found.email, phone: found.phone || '' } : null;
+  });
 
   useEffect(() => {
-    localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
-  }, [orders]);
-
-  useEffect(() => {
-    if (user) localStorage.setItem(SESSION_KEY, user.email);
-    else localStorage.removeItem(SESSION_KEY);
+    setSessionEmail(user ? user.email : null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const normalizeEmail = (email) => email.trim().toLowerCase();

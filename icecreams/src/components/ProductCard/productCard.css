@@ -2,46 +2,91 @@
   background: var(--bg-white);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1.5px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
 }
 
 .product-card:hover {
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 16px 36px rgba(122, 31, 43, 0.14);
+  border-color: rgba(122, 31, 43, 0.18);
+  transform: translateY(-6px);
 }
 
 .pc-img-wrap {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 1.05;
   overflow: hidden;
+  background: #fbf7f4;
 }
 
 .pc-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .product-card:hover .pc-img-wrap img {
   transform: scale(1.08);
 }
 
-.badge-new { position: absolute; top: 12px; left: 12px; background: var(--gradient-sky); color: #fff; z-index: 2; }
-.badge-best { position: absolute; top: 12px; left: 12px; background: var(--gradient-gold); color: #fff; z-index: 2; }
-.badge-discount { position: absolute; top: 12px; right: 12px; background: var(--gradient-primary); color: #fff; z-index: 2; }
+.badge-new {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--gradient-sky);
+  color: #fff;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.badge-best {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--gradient-gold);
+  color: #fff;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.badge-discount {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--gradient-primary);
+  color: #fff;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
 
 .pc-oos {
   position: absolute;
   inset: 0;
-  background: rgba(43, 27, 45, 0.55);
+  background: rgba(43, 27, 45, 0.65);
+  backdrop-filter: blur(2px);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
   z-index: 2;
 }
 

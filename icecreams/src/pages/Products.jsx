@@ -6,21 +6,24 @@ import ProductCard from '../components/ProductCard/ProductCard';
 import Pagination from '../components/common/Pagination';
 import { ProductGridSkeleton } from '../components/Skeleton/Skeleton';
 import usePagination from '../hooks/usePagination';
-import { products, categories, brands } from '../data/products';
+import { products as defaultProducts, categories, brands } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import './products.css';
 
 const PAGE_SIZE = 12;
 
-const flavorList = [...new Set(products.map((p) => p.flavor))];
-
 export default function Products() {
+  const { products } = useProducts();
+  const flavorList = useMemo(() => [...new Set(products.map((p) => p.flavor).filter(Boolean))], [products]);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.get('category') || '';
+  const initialBrand = searchParams.get('brand') || '';
   const highlight = searchParams.get('highlight');
   const searchTerm = (searchParams.get('search') || '').toLowerCase();
 
   const [category, setCategory] = useState(initialCategory);
-  const [brand, setBrand] = useState('');
+  const [brand, setBrand] = useState(initialBrand);
   const [flavor, setFlavor] = useState('');
   const [maxPrice, setMaxPrice] = useState(400);
   const [minRating, setMinRating] = useState(0);
@@ -41,6 +44,8 @@ export default function Products() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCategory(searchParams.get('category') || '');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setBrand(searchParams.get('brand') || '');
   }, [searchParams]);
 
   const filtered = useMemo(() => {
@@ -162,12 +167,35 @@ export default function Products() {
     </div>
   );
 
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragScrollLeft, setDragScrollLeft] = useState(0);
+
+  const handleDragMouseDown = (e) => {
+    setIsDragging(true);
+    setDragStartX(e.pageX - e.currentTarget.offsetLeft);
+    setDragScrollLeft(e.currentTarget.scrollLeft);
+  };
+  const handleDragMouseLeave = () => setIsDragging(false);
+  const handleDragMouseUp = () => setIsDragging(false);
+  const handleDragMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - e.currentTarget.offsetLeft;
+    const walk = (x - dragStartX) * 2;
+    e.currentTarget.scrollLeft = dragScrollLeft - walk;
+  };
+
   return (
     <>
       <PageHeader
         eyebrow="Full Catalogue"
         title="All Ice Creams"
-        sub={`Browse our full range of ${products.length}+ flavours from 10 premium brands.`}
+        sub={
+          brand
+            ? `Showing flavours from ${brands.find((b) => b.id === brand)?.name || 'this brand'}.`
+            : `Browse our full range of ${products.length}+ flavours from 10 premium brands.`
+        }
       />
 
       <section className="section products-section">
@@ -175,6 +203,85 @@ export default function Products() {
           <aside className="products-sidebar">{FiltersPanel}</aside>
 
           <div className="products-main">
+            {/* Selected Brand Banner */}
+            {brand && (
+              <div className="brand-header-banner">
+                <div className="bh-logo">
+                  <img
+                    src={brands.find((b) => b.id === brand)?.image}
+                    alt={brands.find((b) => b.id === brand)?.name}
+                  />
+                </div>
+                <div className="bh-info">
+                  <span className="bh-badge">Official Brand Catalogue</span>
+                  <h2>{brands.find((b) => b.id === brand)?.name}</h2>
+                  <p>
+                    {brands.find((b) => b.id === brand)?.tagline} — Showing authentic flavours, tubs, cones & sticks with real-world prices.
+                  </p>
+                </div>
+                <button className="bh-clear-btn" onClick={() => setBrand('')} title="View all brands">
+                  Show All Brands
+                </button>
+              </div>
+            )}
+
+            {/* Quick Brand Selector Pills with Smooth Scroll & Drag */}
+            <div className="brand-quick-selector">
+              <span className="bqs-label">Brands:</span>
+              <button
+                type="button"
+                className="bqs-arrow-btn"
+                onClick={() => {
+                  const el = document.getElementById('bqsScroll');
+                  if (el) el.scrollBy({ left: -220, behavior: 'smooth' });
+                }}
+                aria-label="Scroll left"
+              >
+                ‹
+              </button>
+              <div
+                id="bqsScroll"
+                className={`bqs-scroll ${isDragging ? 'dragging' : ''}`}
+                onMouseDown={handleDragMouseDown}
+                onMouseLeave={handleDragMouseLeave}
+                onMouseUp={handleDragMouseUp}
+                onMouseMove={handleDragMouseMove}
+                onWheel={(e) => {
+                  if (e.deltaY !== 0) {
+                    e.currentTarget.scrollLeft += e.deltaY;
+                  }
+                }}
+              >
+                <button
+                  className={`bqs-pill ${!brand ? 'active' : ''}`}
+                  onClick={() => setBrand('')}
+                >
+                  All Brands
+                </button>
+                {brands.map((b) => (
+                  <button
+                    key={b.id}
+                    className={`bqs-pill ${brand === b.id ? 'active' : ''}`}
+                    onClick={() => setBrand(b.id)}
+                  >
+                    {b.image && <img src={b.image} alt="" className="bqs-pill-img" />}
+                    {b.name}
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                className="bqs-arrow-btn"
+                onClick={() => {
+                  const el = document.getElementById('bqsScroll');
+                  if (el) el.scrollBy({ left: 220, behavior: 'smooth' });
+                }}
+                aria-label="Scroll right"
+              >
+                ›
+              </button>
+            </div>
+
             <div className="products-toolbar">
               <button className="mobile-filter-btn" onClick={() => setMobileFiltersOpen(true)}>
                 <FiFilter /> Filters

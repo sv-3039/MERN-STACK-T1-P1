@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" rx="36" fill="#1B4D3E"/>
+  <path d="M100 42 C120 42 138 60 138 82 C138 108 100 118 100 118 C100 118 62 108 62 82 C62 60 80 42 100 42 Z" fill="#2E7D32" opacity="0.5"/>
+  <path d="M100 48 Q125 75 100 105 Q75 75 100 48 Z" fill="#81C784"/>
+  <text x="100" y="138" font-family="'Arial Black', sans-serif" font-weight="900" font-size="24" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">NATURALS</text>
+  <text x="100" y="158" font-family="sans-serif" font-weight="700" font-size="9" fill="#A5D6A7" text-anchor="middle" letter-spacing="0.5">REAL FRUIT, REAL ICE CREAM</text>
+</svg>

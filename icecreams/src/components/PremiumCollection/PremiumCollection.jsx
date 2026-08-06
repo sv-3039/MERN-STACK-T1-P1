@@ -1,11 +1,26 @@
 import { motion } from 'framer-motion';
 import { FiShoppingCart } from 'react-icons/fi';
-import { premiumCollection } from '../../data/products';
+import { premiumCollection as fallbackCollection } from '../../data/products';
+import { useProducts } from '../../context/ProductContext';
 import { useCart } from '../../context/CartContext';
 import './premiumCollection.css';
 
 export default function PremiumCollection() {
   const { addToCart } = useCart();
+  const { products } = useProducts();
+
+  const livePremium = products.filter(
+    (p) => p.isPremium || p.category === 'premium'
+  );
+
+  // Use top 5 luxury existing catalog products with real ice cream photos
+  const fallbackLuxuryIds = ['gl1', 'sd1', 'kl1', 'gl3', 'ms1'];
+  const displayItems =
+    livePremium.length >= 4
+      ? livePremium.slice(0, 5)
+      : products.filter((p) => fallbackLuxuryIds.includes(p.id));
+
+  const tags = ['Gold Collection', 'Chef Special', 'Limited Edition', 'Imported', 'Gold Series'];
 
   return (
     <section className="section premium-section">
@@ -20,7 +35,7 @@ export default function PremiumCollection() {
         </div>
 
         <div className="premium-grid">
-          {premiumCollection.map((p, i) => (
+          {displayItems.map((p, i) => (
             <motion.div
               key={p.id}
               className="premium-card"
@@ -32,7 +47,7 @@ export default function PremiumCollection() {
             >
               <div className="premium-img">
                 <img src={p.image} alt={p.name} loading="lazy" />
-                <span className="premium-tag">{p.tag}</span>
+                <span className="premium-tag">{p.tag || tags[i % tags.length]}</span>
               </div>
               <div className="premium-body">
                 <h4>{p.name}</h4>

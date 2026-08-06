@@ -11,7 +11,7 @@ export default function Footer() {
             <span className="logo-scoop">🍦</span>
             <span className="logo-text">Scoop<span>&amp;Co.</span></span>
           </Link>
-          <p>Premium ice creams, sundaes, gelatos and family packs from India's most loved brands — delivered fresh, every day.</p>
+          <p>Premium ice creams, sundaes, gelatos and family packs from India's most loved brands — freshly served every day at our Mall Counter.</p>
           <div className="footer-social">
             <a href="#" aria-label="Instagram"><FiInstagram /></a>
             <a href="#" aria-label="Facebook"><FiFacebook /></a>

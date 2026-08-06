@@ -11,10 +11,12 @@
 // picked up automatically by the glob below.
 
 // All local images in src/assets/images/** (any extension).
-const localImages = import.meta.glob(
-  '/src/assets/images/**/*.{jpg,jpeg,png,webp,avif,svg,gif}',
-  { eager: true, import: 'default' },
-);
+const localImages = typeof import.meta.glob === 'function'
+  ? import.meta.glob(
+      '/src/assets/images/**/*.{jpg,jpeg,png,webp,avif,svg,gif}',
+      { eager: true, import: 'default' },
+    )
+  : {};
 
 // Normalise every local path to lowercase for case-insensitive matching.
 function keyFor(path) {

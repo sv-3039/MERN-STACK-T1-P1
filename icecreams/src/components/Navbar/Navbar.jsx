@@ -28,6 +28,7 @@ const links = [
   { to: '/brands', label: 'Brands' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
+  { to: '/admin', label: 'Admin' },
 ];
 
 export default function Navbar() {

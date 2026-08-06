@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import { FiShoppingCart } from 'react-icons/fi';
-import { combos } from '../../data/products';
 import { useCart } from '../../context/CartContext';
+import { useProducts } from '../../context/ProductContext';
 import './comboOffers.css';
 
 export default function ComboOffers() {
   const { addToCart } = useCart();
+  const { combos } = useProducts();
 
   return (
     <section className="section combo-section">

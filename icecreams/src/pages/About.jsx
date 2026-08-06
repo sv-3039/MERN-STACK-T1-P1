@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
-import { FiHeart, FiTruck, FiAward, FiSmile } from 'react-icons/fi';
+import { FiHeart, FiClock, FiAward, FiSmile } from 'react-icons/fi';
 import PageHeader from '../components/common/PageHeader';
 import Reviews from '../components/Reviews/Reviews';
 import './about.css';
 
 const values = [
   { icon: <FiHeart />, title: 'Made with Love', desc: 'Every scoop is churned with care by our partner brands, never rushed.' },
-  { icon: <FiTruck />, title: 'Fast & Fresh', desc: 'Cold-chain delivery keeps every order frozen and fresh to your door.' },
+  { icon: <FiClock />, title: 'Counter Express', desc: 'Freshly served at our Mall Counter in 5-10 minutes, always perfectly frozen.' },
   { icon: <FiAward />, title: 'Premium Quality', desc: 'We partner only with India\'s most trusted and awarded ice cream brands.' },
-  { icon: <FiSmile />, title: 'Customer First', desc: '50,000+ happy customers and counting, with a 4.8★ average rating.' },
+  { icon: <FiSmile />, title: 'Customer First', desc: '50,000+ happy mall visitors and counting, with a 4.8★ average rating.' },
 ];
 
 export default function About() {
@@ -31,12 +31,12 @@ export default function About() {
             <span className="eyebrow">Since 2015</span>
             <h2 className="section-title">A scoop shop with mall-sized ambition</h2>
             <p className="about-text">
-              Scoop &amp; Co. started as a single kiosk inside a shopping mall food court, built on a simple
-              idea: give people access to every great ice cream brand in one place, without compromise.
+              Scoop &amp; Co. started as a flagship counter inside the shopping mall food court, built on a simple
+              idea: give shoppers access to every great ice cream brand in one place, without compromise.
             </p>
             <p className="about-text">
-              Today, we curate 40+ flavours across cups, cones, sundaes, gelato, kulfi, and family packs from
-              ten of India's most loved brands — and deliver them fresh, fast, and always with a smile.
+              Today, we curate 70+ authentic flavours across cups, cones, sundaes, gelato, kulfi, and family packs from
+              ten of India's most loved brands — served fresh, chilled, and always with a smile at our Mall Counter.
             </p>
           </motion.div>
           <motion.img

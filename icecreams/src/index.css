@@ -1,52 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --primary-pink: #FF4D6D;
-  --primary-yellow: #FFB703;
-  --primary-cream: #FFF8F0;
+  /* Core brand palette — warm burgundy + gold, suited to a real mall/mart counter */
+  --primary-pink: #7A1F2B;
+  --primary-yellow: #C9A15A;
+  --primary-cream: #FFF8EE;
 
-  --secondary-purple: #6A4C93;
-  --secondary-blue: #8ECAE6;
-  --secondary-orange: #FB8500;
+  --secondary-purple: #591620;
+  --secondary-blue: #3E8F8A;
+  --secondary-orange: #B9812E;
 
   --bg-white: #FFFFFF;
-  --bg-cream: #FFF8F0;
-  --bg-pink-light: #FFEDF1;
+  --bg-cream: #FFF8EE;
+  --bg-pink-light: #F5E7E7;
 
-  --text-dark: #2B1B2D;
-  --text-muted: #6E5A6F;
+  --text-dark: #2E1B18;
+  --text-muted: #7C685E;
   --text-light: #FFFFFF;
 
-  --gradient-primary: linear-gradient(135deg, #FF4D6D 0%, #FB8500 100%);
-  --gradient-purple: linear-gradient(135deg, #6A4C93 0%, #FF4D6D 100%);
-  --gradient-sky: linear-gradient(135deg, #8ECAE6 0%, #6A4C93 100%);
-  --gradient-gold: linear-gradient(135deg, #FFB703 0%, #FB8500 100%);
+  --gradient-primary: linear-gradient(135deg, #7A1F2B 0%, #A83246 100%);
+  --gradient-purple: linear-gradient(135deg, #2E0E14 0%, #7A1F2B 100%);
+  --gradient-sky: linear-gradient(135deg, #3E8F8A 0%, #2F6B4F 100%);
+  --gradient-gold: linear-gradient(135deg, #DDBB80 0%, #B9812E 100%);
 
-  --shadow-soft: 0 8px 30px rgba(106, 76, 147, 0.10);
-  --shadow-card: 0 12px 34px rgba(255, 77, 109, 0.14);
-  --shadow-lift: 0 20px 44px rgba(43, 27, 45, 0.18);
+  --shadow-soft: 0 8px 30px rgba(122, 31, 43, 0.10);
+  --shadow-card: 0 12px 34px rgba(122, 31, 43, 0.16);
+  --shadow-lift: 0 20px 44px rgba(46, 27, 24, 0.20);
 
   --radius-sm: 12px;
   --radius-md: 20px;
   --radius-lg: 32px;
   --radius-pill: 999px;
 
-  --font-display: 'Inter', sans-serif;
+  --font-display: 'Playfair Display', 'Inter', serif;
   --font-body: 'Inter', sans-serif;
 
   --container: 1280px;
   --nav-height: 76px;
+
+  /* Aliases kept for any component referencing the "mart" naming scheme */
+  --burgundy: #7A1F2B;
+  --burgundy-dark: #591620;
+  --burgundy-tint: #F5E7E7;
+  --brown: #2E1B18;
+  --brown-soft: #7C685E;
+  --cream-soft: #FFF8EE;
+  --parchment: #F3E6D2;
+  --forest: #2F6B4F;
+  --forest-soft: #E3F0E8;
 }
 
 [data-theme='dark'] {
-  --bg-white: #1C1220;
-  --bg-cream: #241726;
-  --bg-pink-light: #2B1A2A;
-  --text-dark: #FBF1F5;
-  --text-muted: #C9B8CB;
-  --primary-cream: #241726;
+  --bg-white: #201412;
+  --bg-cream: #291915;
+  --bg-pink-light: #33201E;
+  --text-dark: #FBF1EC;
+  --text-muted: #CBB7AE;
+  --primary-cream: #291915;
   --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.35);
   --shadow-card: 0 12px 34px rgba(0, 0, 0, 0.45);
+  --cream-soft: #33201E;
+  --parchment: #33201E;
 }
 
 * {

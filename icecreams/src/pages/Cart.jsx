@@ -111,8 +111,8 @@ export default function Cart() {
               </div>
             )}
             <div className="summary-row">
-              <span>Delivery Charge</span>
-              <span>{deliveryCharge === 0 ? 'Free' : `₹${deliveryCharge}`}</span>
+              <span>Mall Counter Pickup</span>
+              <span style={{ color: '#2ecc71', fontWeight: 700 }}>FREE</span>
             </div>
             <div className="summary-row">
               <span>Tax (5%)</span>

@@ -26,7 +26,14 @@ export default function QuickViewModal({ product, open, onClose }) {
           >
             <button className="qv-close" onClick={onClose}><FiX /></button>
             <div className="qv-img">
-              <img src={product.image} alt={product.name} />
+              <img
+                src={product.image}
+                alt={product.name}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80';
+                }}
+              />
             </div>
             <div className="qv-info">
               <p className="pc-brand">{product.brand}</p>
@@ -39,7 +46,7 @@ export default function QuickViewModal({ product, open, onClose }) {
               <p className="qv-desc">{product.description}</p>
               <div className="pc-price-row" style={{ margin: '14px 0' }}>
                 <span className="pc-price" style={{ fontSize: 26 }}>₹{product.price}</span>
-                {product.mrp && <span className="pc-mrp">₹{product.mrp}</span>}
+                {product.mrp > product.price && <span className="pc-mrp">₹{product.mrp}</span>}
               </div>
               <button className="btn btn-primary btn-ripple" style={{ width: '100%' }} onClick={() => { addToCart(product); onClose(); }}>
                 <FiShoppingCart /> Add to Cart

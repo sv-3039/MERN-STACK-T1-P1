@@ -2,13 +2,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
-import { products } from '../../data/products';
+import { useProducts } from '../../context/ProductContext';
 import ProductCard from '../ProductCard/ProductCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './popularProducts.css';
 
 export default function PopularProducts() {
+  const { products } = useProducts();
   const popular = products.filter((p) => p.isBestseller).slice(0, 10);
 
   return (

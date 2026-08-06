@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext.jsx';
 import { CartProvider } from './context/CartContext.jsx';
 import { WishlistProvider } from './context/WishlistContext.jsx';
 import { RecentlyViewedProvider } from './context/RecentlyViewedContext.jsx';
+import { ProductProvider } from './context/ProductContext.jsx';
 import './index.css';
 
 createRoot(document.getElementById('root')).render(
@@ -19,7 +20,9 @@ createRoot(document.getElementById('root')).render(
             <CartProvider>
               <WishlistProvider>
                 <RecentlyViewedProvider>
-                  <App />
+                  <ProductProvider>
+                    <App />
+                  </ProductProvider>
                 </RecentlyViewedProvider>
               </WishlistProvider>
             </CartProvider>

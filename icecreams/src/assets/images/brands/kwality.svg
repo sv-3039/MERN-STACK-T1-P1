@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" rx="36" fill="#1C5238"/>
+  <path d="M72 65 C60 48 38 60 48 78 C58 96 100 126 100 126 C100 126 142 96 152 78 C162 60 140 48 128 65 C118 78 100 95 100 95 C100 95 82 78 72 65 Z" fill="#E53935"/>
+  <path d="M76 68 C66 53 46 63 54 78 C62 93 100 120 100 120 C100 120 138 93 146 78 C154 63 134 53 124 68 C116 78 100 92 100 92 C100 92 84 78 76 68 Z" fill="#FF5252"/>
+  <text x="100" y="148" font-family="'Arial Black', sans-serif" font-weight="900" font-size="20" fill="#FFFFFF" text-anchor="middle">Kwality Wall's</text>
+  <text x="100" y="166" font-family="sans-serif" font-weight="700" font-size="10" fill="#A5D6A7" text-anchor="middle" letter-spacing="1">HEART BRAND</text>
+</svg>

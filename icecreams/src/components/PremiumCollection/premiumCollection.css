@@ -1,14 +1,14 @@
 .premium-section {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #2B1B2D 0%, #6A4C93 100%);
+  background: var(--gradient-purple);
 }
 
 .premium-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 183, 3, 0.18), transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(255, 77, 109, 0.2), transparent 45%);
+  background: radial-gradient(circle at 20% 20%, rgba(201, 161, 90, 0.22), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(122, 31, 43, 0.28), transparent 45%);
 }
 
 .premium-eyebrow {
@@ -48,7 +48,7 @@
   bottom: 10px;
   left: 10px;
   background: var(--gradient-gold);
-  color: #2B1B2D;
+  color: var(--text-dark);
   font-size: 10.5px;
   font-weight: 700;
   padding: 5px 10px;
