@@ -1,0 +1,127 @@
+.product-list-section {
+  padding: 60px 24px;
+  background: var(--bg-primary);
+}
+
+.product-list-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.product-list-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.product-list-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.product-list-subtitle {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 0;
+}
+
+.product-filters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.brand-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s;
+  text-transform: capitalize;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.filter-btn.active {
+  background: var(--accent-gold);
+  color: #000;
+  border-color: var(--accent-gold);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.no-products {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+.no-products-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.no-products p {
+  font-size: 16px;
+  margin: 0 0 16px;
+}
+
+.reset-btn {
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--accent-gold);
+  color: #000;
+  border: none;
+  transition: transform 0.3s;
+}
+
+.reset-btn:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .product-list-section {
+    padding: 40px 16px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .product-list-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
