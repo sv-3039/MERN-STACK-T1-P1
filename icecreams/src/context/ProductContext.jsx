@@ -8,8 +8,12 @@ const API_BASE_URL = 'http://localhost:5000/api';
 function applyImageOverrides(productList) {
   try {
     const overrides = JSON.parse(localStorage.getItem('scoop_custom_images') || '{}');
+    const genericUrl = 'photo-1570197788417-0e82375c9371';
     return productList.map((p) => {
       if (overrides[p.id]) {
+        if (overrides[p.id].includes(genericUrl) && p.image && !p.image.includes(genericUrl)) {
+          return p;
+        }
         return { ...p, image: overrides[p.id] };
       }
       return p;
@@ -32,10 +36,15 @@ function repairProductList(productList) {
 
     let cat = (p.category || 'cups').toLowerCase().trim();
 
-    // Canonical category match from initialProducts
+    // Canonical category & image match from initialProducts
     const initMatch = initialProducts.find((i) => String(i.id) === String(p.id));
+    let finalImg = p.image;
+
     if (initMatch) {
       cat = initMatch.category.toLowerCase().trim();
+      if (!finalImg || finalImg.includes('photo-1570197788417-0e82375c9371') || (initMatch.image && initMatch.image !== finalImg && !localStorage.getItem('scoop_custom_images')?.includes(finalImg))) {
+        finalImg = initMatch.image;
+      }
     } else if (isAmul) {
       if (cat === 'gelato' || cat === 'sundaes' || cat === 'milkshakes') {
         if (nameLower.includes('kulfi')) cat = 'kulfi';
@@ -56,6 +65,7 @@ function repairProductList(productList) {
 
     repaired.push({
       ...p,
+      image: finalImg,
       category: cat,
       isBestseller: isBest,
       brandId: isAmul ? 'amul' : (p.brandId || (p.brand ? p.brand.toLowerCase().replace(/\s+/g, '-') : 'scoop-co')).toLowerCase().trim(),

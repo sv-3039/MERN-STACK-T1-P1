@@ -48,9 +48,19 @@ export default function QuickViewModal({ product, open, onClose }) {
                 <span className="pc-price" style={{ fontSize: 26 }}>₹{product.price}</span>
                 {product.mrp > product.price && <span className="pc-mrp">₹{product.mrp}</span>}
               </div>
-              <button className="btn btn-primary btn-ripple" style={{ width: '100%' }} onClick={() => { addToCart(product); onClose(); }}>
-                <FiShoppingCart /> Add to Cart
-              </button>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <button className="btn btn-outline" style={{ justifyContent: 'center' }} onClick={() => { addToCart(product); onClose(); }}>
+                  <FiShoppingCart /> Add to Cart
+                </button>
+                <Link
+                  to="/checkout"
+                  className="btn btn-primary btn-ripple"
+                  style={{ justifyContent: 'center' }}
+                  onClick={() => { addToCart(product); onClose(); }}
+                >
+                  Buy Now
+                </Link>
+              </div>
               <Link
                 to={`/product/${product.id}`}
                 className="btn btn-outline"

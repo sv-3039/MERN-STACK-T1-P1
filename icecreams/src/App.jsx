@@ -30,6 +30,8 @@ const Account = lazy(() => import('./pages/Account'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
+import SpinWheelModal from './components/SpinWheel/SpinWheelModal';
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -72,6 +74,7 @@ export default function App() {
         </ErrorBoundary>
       </main>
       <Footer />
+      <SpinWheelModal />
       <BackToTop />
     </>
   );

@@ -9,6 +9,8 @@ export function CartProvider({ children }) {
   const [items, setItems] = useLocalStorage('scoopco_cart', []);
   const { showToast } = useToast();
 
+  const [appliedCoupon, setAppliedCoupon] = useLocalStorage('scoopco_coupon', null);
+
   const addToCart = (product, qty = 1) => {
     setItems((prev) => {
       const existing = prev.find((i) => i.id === product.id);
@@ -30,16 +32,53 @@ export function CartProvider({ children }) {
     setItems((prev) => prev.map((i) => (i.id === id ? { ...i, qty } : i)));
   };
 
-  const clearCart = () => setItems([]);
+  const clearCart = () => {
+    setItems([]);
+  };
+
+  const applyCoupon = (code, discountPct = 15, discountAmount = 0, label = '') => {
+    setAppliedCoupon({ code, discountPct, discountAmount, label });
+    showToast(`Coupon "${code}" applied! 🎉`, 'success');
+  };
+
+  const removeCoupon = () => {
+    setAppliedCoupon(null);
+    showToast('Coupon removed', 'info');
+  };
 
   const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0);
   const deliveryCharge = 0; // In-Mall counter pickup is always free
-  const tax = +(subtotal * 0.05).toFixed(2);
-  const grandTotal = +(subtotal + tax).toFixed(2);
+
+  let discountVal = 0;
+  if (appliedCoupon && subtotal > 0) {
+    if (appliedCoupon.discountPct > 0) {
+      discountVal = +((subtotal * appliedCoupon.discountPct) / 100).toFixed(2);
+    } else if (appliedCoupon.discountAmount > 0) {
+      discountVal = Math.min(subtotal, appliedCoupon.discountAmount);
+    }
+  }
+
+  const taxableAmount = Math.max(0, subtotal - discountVal);
+  const tax = +(taxableAmount * 0.05).toFixed(2);
+  const grandTotal = +(taxableAmount + tax).toFixed(2);
 
   return (
     <CartContext.Provider
-      value={{ items, addToCart, removeFromCart, updateQty, clearCart, subtotal, deliveryCharge, tax, grandTotal }}
+      value={{
+        items,
+        addToCart,
+        removeFromCart,
+        updateQty,
+        clearCart,
+        subtotal,
+        deliveryCharge,
+        discountVal,
+        appliedCoupon,
+        applyCoupon,
+        removeCoupon,
+        tax,
+        grandTotal,
+      }}
     >
       {children}
     </CartContext.Provider>

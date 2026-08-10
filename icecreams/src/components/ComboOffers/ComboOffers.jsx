@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { FiShoppingCart } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import { FiShoppingCart, FiZap } from 'react-icons/fi';
 import { useCart } from '../../context/CartContext';
 import { useProducts } from '../../context/ProductContext';
 import './comboOffers.css';
@@ -7,6 +8,7 @@ import './comboOffers.css';
 export default function ComboOffers() {
   const { addToCart } = useCart();
   const { combos } = useProducts();
+  const navigate = useNavigate();
 
   return (
     <section className="section combo-section">
@@ -41,12 +43,25 @@ export default function ComboOffers() {
                     <span className="pc-price">₹{c.price}</span>
                     <span className="pc-mrp">₹{c.mrp}</span>
                   </div>
-                  <button
-                    className="btn btn-primary btn-ripple pc-add"
-                    onClick={() => addToCart({ id: c.id, name: c.name, price: c.price, image: c.image, brand: 'Combo' })}
-                  >
-                    <FiShoppingCart /> Add Combo
-                  </button>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '8px', marginTop: 'auto' }}>
+                    <button
+                      className="btn btn-outline"
+                      style={{ padding: '9px 6px', fontSize: '13px', justifyContent: 'center' }}
+                      onClick={() => addToCart({ id: c.id, name: c.name, price: c.price, image: c.image, brand: 'Combo' })}
+                    >
+                      <FiShoppingCart /> Add Combo
+                    </button>
+                    <button
+                      className="btn btn-primary btn-ripple"
+                      style={{ padding: '9px 6px', fontSize: '13px', justifyContent: 'center' }}
+                      onClick={() => {
+                        addToCart({ id: c.id, name: c.name, price: c.price, image: c.image, brand: 'Combo' });
+                        navigate('/checkout');
+                      }}
+                    >
+                      <FiZap /> Buy Now
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             );

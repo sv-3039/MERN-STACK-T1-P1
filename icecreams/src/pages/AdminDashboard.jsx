@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useProducts } from '../context/ProductContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import { brands, categories } from '../data/products.js';
+import StoreAnalytics from '../components/Admin/StoreAnalytics.jsx';
 import {
   FiLock,
   FiPlus,
@@ -16,6 +17,7 @@ import {
   FiShoppingBag,
   FiX,
   FiCheck,
+  FiTrendingUp,
 } from 'react-icons/fi';
 import './admin.css';
 
@@ -414,6 +416,12 @@ export default function AdminDashboard() {
             >
               <FiShoppingBag /> Counter Orders
             </button>
+            <button
+              className={`admin-tab-btn ${activeTab === 'analytics' ? 'active' : ''}`}
+              onClick={() => setActiveTab('analytics')}
+            >
+              <FiTrendingUp /> Store Analytics
+            </button>
           </div>
 
           <div style={{ display: 'flex', gap: '10px' }}>
@@ -772,6 +780,11 @@ export default function AdminDashboard() {
               Orders placed by customers at Counter Pickup will display here with Token numbers (TK-01, TK-02).
             </p>
           </div>
+        )}
+
+        {/* --- STORE ANALYTICS TAB --- */}
+        {activeTab === 'analytics' && (
+          <StoreAnalytics products={products} combos={combos} />
         )}
       </div>
 

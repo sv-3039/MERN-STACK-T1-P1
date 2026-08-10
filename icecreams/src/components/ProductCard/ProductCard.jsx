@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiHeart, FiEye, FiShoppingCart, FiStar } from 'react-icons/fi';
+import { FiHeart, FiEye, FiShoppingCart, FiStar, FiZap } from 'react-icons/fi';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import QuickViewModal from './QuickViewModal';
@@ -11,10 +11,17 @@ export default function ProductCard({ product, index = 0 }) {
   const { addToCart } = useCart();
   const { isWishlisted, toggleWishlist } = useWishlist();
   const [quickView, setQuickView] = useState(false);
+  const navigate = useNavigate();
 
   const wishlisted = isWishlisted(product.id);
   const outOfStock = product.stock === 0;
   const discount = product.mrp ? Math.round(((product.mrp - product.price) / product.mrp) * 100) : 0;
+
+  const handleBuyNow = (e) => {
+    e.stopPropagation();
+    addToCart(product);
+    navigate('/checkout');
+  };
 
   return (
     <>
@@ -75,13 +82,24 @@ export default function ProductCard({ product, index = 0 }) {
             {product.mrp > product.price && <span className="pc-mrp">₹{product.mrp}</span>}
           </div>
 
-          <button
-            className="btn btn-primary btn-ripple pc-add"
-            disabled={outOfStock}
-            onClick={() => addToCart(product)}
-          >
-            <FiShoppingCart /> {outOfStock ? 'Notify Me' : 'Add to Cart'}
-          </button>
+          <div className="pc-btn-group">
+            <button
+              className="btn btn-primary btn-ripple pc-add"
+              disabled={outOfStock}
+              onClick={() => addToCart(product)}
+            >
+              <FiShoppingCart /> {outOfStock ? 'Notify Me' : 'Add to Cart'}
+            </button>
+
+            {!outOfStock && (
+              <button
+                className="btn pc-buy btn-ripple"
+                onClick={handleBuyNow}
+              >
+                <FiZap /> Buy Now
+              </button>
+            )}
+          </div>
         </div>
       </motion.div>
 

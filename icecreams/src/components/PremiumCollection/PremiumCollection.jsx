@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { FiShoppingCart } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import { FiShoppingCart, FiZap } from 'react-icons/fi';
 import { premiumCollection as fallbackCollection } from '../../data/products';
 import { useProducts } from '../../context/ProductContext';
 import { useCart } from '../../context/CartContext';
@@ -8,6 +9,7 @@ import './premiumCollection.css';
 export default function PremiumCollection() {
   const { addToCart } = useCart();
   const { products } = useProducts();
+  const navigate = useNavigate();
 
   const livePremium = products.filter(
     (p) => p.isPremium || p.category === 'premium'
@@ -54,9 +56,21 @@ export default function PremiumCollection() {
                 <div className="pc-price-row">
                   <span className="pc-price">₹{p.price}</span>
                 </div>
-                <button className="btn btn-primary btn-ripple pc-add" onClick={() => addToCart(p)}>
-                  <FiShoppingCart /> Add to Cart
-                </button>
+                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '8px', marginTop: 'auto' }}>
+                  <button className="btn btn-outline" style={{ padding: '8px 4px', fontSize: '12.5px', justifyContent: 'center' }} onClick={() => addToCart(p)}>
+                    <FiShoppingCart /> Add to Cart
+                  </button>
+                  <button
+                    className="btn btn-primary btn-ripple"
+                    style={{ padding: '8px 4px', fontSize: '12.5px', justifyContent: 'center' }}
+                    onClick={() => {
+                      addToCart(p);
+                      navigate('/checkout');
+                    }}
+                  >
+                    <FiZap /> Buy Now
+                  </button>
+                </div>
               </div>
             </motion.div>
           ))}

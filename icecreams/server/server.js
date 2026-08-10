@@ -3,12 +3,14 @@ import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { readDB, writeDB } from './db.js';
 import { Product } from './models/Product.js';
 import { Combo } from './models/Combo.js';
 import { Order } from './models/Order.js';
 import { products as defaultProducts, combos as defaultCombos } from '../src/data/products.js';
+import { sendAutomatedWhatsAppOrderToken } from './services/whatsapp.js';
 
 dotenv.config();
 
@@ -307,19 +309,24 @@ app.post('/api/orders', async (req, res) => {
     const orderData = {
       ...req.body,
       orderId: req.body.orderId || `ORD-${Date.now()}`,
-      status: 'Pending',
+      status: 'Confirmed',
       createdAt: new Date().toISOString(),
     };
 
+    // Trigger direct automated backend WhatsApp token dispatch
+    const whatsappResult = await sendAutomatedWhatsAppOrderToken(orderData);
+    orderData.whatsappSent = whatsappResult.success;
+    orderData.whatsappStatus = whatsappResult.mode || 'SENT';
+
     if (isMongoConnected) {
       const created = await Order.create(orderData);
-      return res.status(201).json({ success: true, order: created });
+      return res.status(201).json({ success: true, order: created, whatsapp: whatsappResult });
     }
 
     const db = readDB();
     db.orders = [orderData, ...(db.orders || [])];
     writeDB(db);
-    res.status(201).json({ success: true, order: orderData });
+    res.status(201).json({ success: true, order: orderData, whatsapp: whatsappResult });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -345,6 +352,66 @@ app.post('/api/seed', async (req, res) => {
     res.json({ success: true, message: 'Database re-seeded successfully' });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Razorpay Endpoint: Create Order
+app.post('/api/create-razorpay-order', async (req, res) => {
+  try {
+    const { amount, receipt } = req.body;
+    const keyId = process.env.RAZORPAY_KEY_ID || 'rzp_test_TNljATqMmXJupa';
+    const keySecret = process.env.RAZORPAY_KEY_SECRET || 'tBogfpHfUMgrgT35YjteLDG5';
+
+    const amountInPaise = Math.round(Number(amount) * 100);
+    const authHeader = 'Basic ' + Buffer.from(`${keyId}:${keySecret}`).toString('base64');
+
+    const response = await fetch('https://api.razorpay.com/v1/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': authHeader,
+      },
+      body: JSON.stringify({
+        amount: amountInPaise,
+        currency: 'INR',
+        receipt: receipt || `rcpt_${Date.now()}`,
+      }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      console.error('Razorpay Order Error:', data);
+      return res.status(400).json({ success: false, error: data.error?.description || 'Razorpay order creation failed' });
+    }
+
+    res.json({
+      success: true,
+      order: data,
+      keyId: keyId,
+    });
+  } catch (err) {
+    console.error('Create Razorpay Order Server Error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Razorpay Endpoint: Verify Signature
+app.post('/api/verify-razorpay-signature', async (req, res) => {
+  try {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    const keySecret = process.env.RAZORPAY_KEY_SECRET || 'tBogfpHfUMgrgT35YjteLDG5';
+
+    const hmac = crypto.createHmac('sha256', keySecret);
+    hmac.update(`${razorpay_order_id}|${razorpay_payment_id}`);
+    const generatedSignature = hmac.digest('hex');
+
+    if (generatedSignature === razorpay_signature) {
+      res.json({ success: true, verified: true });
+    } else {
+      res.status(400).json({ success: false, verified: false, error: 'Invalid Razorpay Signature' });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
