@@ -1,0 +1,279 @@
+/* ================= NAVBAR ================= */
+
+.bags-store-app .navbar {
+  position: relative;
+  z-index: 99;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 60px;
+
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 28px;
+  font-weight: bold;
+
+  color: #ff6b00;
+}
+
+.logo span{
+    color:#222;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+.nav-links li{
+
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.nav-links li:hover{
+
+    color:#ff6b00;
+
+}
+
+.nav-icons{
+
+    display:flex;
+    gap:25px;
+    align-items:center;
+
+}
+
+.icon{
+
+    font-size:25px;
+    cursor:pointer;
+    transition:.3s;
+    position:relative;
+
+}
+
+.icon:hover{
+
+    transform:scale(1.15);
+
+}
+
+.cart-badge{
+
+    position:absolute;
+    top:-8px;
+    right:-10px;
+
+    background:red;
+    color:white;
+
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:12px;
+
+}
+
+/* ================= CART ================= */
+
+.cart-popup{
+
+    position:fixed;
+
+    top:85px;
+    right:20px;
+
+    width:360px;
+
+    max-height:500px;
+    overflow-y:auto;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+}
+
+.cart-popup h2{
+
+    margin-bottom:20px;
+
+}
+
+.cart-item{
+
+    display:flex;
+    gap:15px;
+
+    margin-bottom:18px;
+
+    align-items:center;
+
+}
+
+.cart-item img{
+
+    width:80px;
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+}
+
+.cart-details{
+
+flex:1;
+
+}
+
+.cart-details h4{
+
+margin-bottom:6px;
+
+}
+
+.cart-details p{
+
+color:#ff6b00;
+font-weight:bold;
+
+}
+
+.remove-btn{
+
+margin-top:8px;
+
+padding:8px 15px;
+
+border:none;
+
+background:#ff3b30;
+
+color:white;
+
+border-radius:8px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.remove-btn:hover{
+
+background:#d92d20;
+
+}
+
+.cart-total{
+
+text-align:right;
+
+color:#ff6b00;
+
+margin-top:20px;
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.navbar{
+
+padding:15px 20px;
+flex-wrap:wrap;
+
+}
+
+.nav-links{
+
+display:none;
+
+}
+
+.cart-popup{
+
+width:95%;
+right:2.5%;
+
+}
+
+}
+.bags-store-app .nav-links a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  background: transparent;
+}
+
+.bags-store-app .nav-links a:hover {
+  color: #ff6b00;
+  background: rgba(255, 107, 0, 0.08);
+}
+
+.login-btn,
+.register-btn,
+.logout-btn,
+.checkout-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.login-btn {
+  background: #4b2e2e;
+  color: white;
+}
+
+.register-btn {
+  background: #ff9800;
+  color: white;
+}
+
+.logout-btn {
+  background: crimson;
+  color: white;
+}
+
+.checkout-btn {
+  width: 100%;
+  margin-top: 15px;
+  background: green;
+  color: white;
+}

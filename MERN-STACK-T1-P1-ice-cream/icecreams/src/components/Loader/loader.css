@@ -1,0 +1,23 @@
+.loader-wrap {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.loader-scoop {
+  font-size: 48px;
+  animation: bounce 1s infinite ease-in-out;
+}
+
+.loader-wrap p {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}

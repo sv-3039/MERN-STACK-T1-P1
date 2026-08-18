@@ -1,0 +1,48 @@
+const seats = [
+  { id: 1, seatNo: "A1", booked: false },
+  { id: 2, seatNo: "A2", booked: false },
+  { id: 3, seatNo: "A3", booked: false },
+  { id: 4, seatNo: "A4", booked: true },
+  { id: 5, seatNo: "A5", booked: false },
+  { id: 6, seatNo: "A6", booked: false },
+  { id: 7, seatNo: "A7", booked: false },
+  { id: 8, seatNo: "A8", booked: false },
+
+  { id: 9, seatNo: "B1", booked: false },
+  { id: 10, seatNo: "B2", booked: false },
+  { id: 11, seatNo: "B3", booked: false },
+  { id: 12, seatNo: "B4", booked: false },
+  { id: 13, seatNo: "B5", booked: true },
+  { id: 14, seatNo: "B6", booked: false },
+  { id: 15, seatNo: "B7", booked: false },
+  { id: 16, seatNo: "B8", booked: false },
+
+  { id: 17, seatNo: "C1", booked: false },
+  { id: 18, seatNo: "C2", booked: false },
+  { id: 19, seatNo: "C3", booked: false },
+  { id: 20, seatNo: "C4", booked: false },
+  { id: 21, seatNo: "C5", booked: false },
+  { id: 22, seatNo: "C6", booked: false },
+  { id: 23, seatNo: "C7", booked: true },
+  { id: 24, seatNo: "C8", booked: false },
+
+  { id: 25, seatNo: "D1", booked: false },
+  { id: 26, seatNo: "D2", booked: false },
+  { id: 27, seatNo: "D3", booked: false },
+  { id: 28, seatNo: "D4", booked: false },
+  { id: 29, seatNo: "D5", booked: false },
+  { id: 30, seatNo: "D6", booked: false },
+  { id: 31, seatNo: "D7", booked: false },
+  { id: 32, seatNo: "D8", booked: true },
+
+  { id: 33, seatNo: "E1", booked: false },
+  { id: 34, seatNo: "E2", booked: false },
+  { id: 35, seatNo: "E3", booked: false },
+  { id: 36, seatNo: "E4", booked: false },
+  { id: 37, seatNo: "E5", booked: true },
+  { id: 38, seatNo: "E6", booked: false },
+  { id: 39, seatNo: "E7", booked: false },
+  { id: 40, seatNo: "E8", booked: false },
+];
+
+export default seats;

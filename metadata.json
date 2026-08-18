@@ -1,0 +1,6 @@
+{
+  "name": "MERN Stack Mall",
+  "description": "Multi-store shopping mall portal uniting 10 online storefronts",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

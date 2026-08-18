@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fb;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+  padding: 15px 0;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.navbar .form-control {
+  border-radius: 10px;
+}
+
+.navbar .btn {
+  border-radius: 10px;
+}
+
+.hero-section {
+  background: linear-gradient(to right, #0f172a, #2563eb);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero-section h1 {
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.hero-section button {
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.card img {
+  height: 320px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-text {
+  color: #555;
+}
+
+.card h4 {
+  font-weight: bold;
+}
+
+.btn {
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.section-title {
+  font-size: 45px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.category-btn {
+  margin: 8px;
+}
+
+.footer {
+  background: #212529;
+  color: white;
+  padding: 30px;
+  text-align: center;
+  margin-top: 60px;
+}

@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+/* Global Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   IRONCLAD MALL HEADER ISOLATION & ALIGNMENT RESCUE SHIELD
+   ========================================================================== */
+
+/* Force all sub-elements to calculate padding/borders correctly */
+#mall-main-header,
+#mall-main-header * {
+  box-sizing: border-box !important;
+}
+
+/* The Main Row Container: Locks height and structure against global leakage */
+#mall-main-header {
+  background-color: #0f172a !important;
+  background: #0f172a !important;
+  line-height: normal !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+  
+  /* CRITICAL: Enforces header row behavior regardless of other apps' CSS styles */
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+  padding: 0.75rem 1.5rem !important; /* Locks structural breathing room */
+  height: 64px !important;            /* Hard-locks height so headers never look uneven */
+}
+
+/* Logo Brand Element Guard */
+#mall-main-header .mall-brand {
+  background: transparent !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important; /* Ensures the logo never squishes when viewport narrows */
+  gap: 0.5rem !important;
+}
+
+/* 
+   THE CORE BUG FIX: 
+   Forces the list of links (Book Stall, Bags, Cosmetics) to remain an 
+   unbending horizontal row. Other apps' global CSS cannot collapse this.
+*/
+#mall-main-header .mall-nav-links {
+  background: transparent !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 1.5rem !important;       /* Hard-forces clean, uniform space between every branch link */
+  flex-wrap: nowrap !important; /* Absolute guard: elements will NEVER stack into two rows */
+  overflow: transparent !important;
+}
+
+/* 
+   THE INDIVIDUAL TARGET SHIELD:
+   This directly insulates the link tags themselves. When Bootstrap tries 
+   to compress width or stack them vertically, this block overrides it.
+*/
+#mall-main-header .mall-nav-links a,
+#mall-main-header .mall-nav-links button,
+#mall-main-header .mall-nav-links span,
+#mall-main-header .mall-nav-links div {
+  display: inline-block !important;
+  flex-shrink: 0 !important;       /* SILVER BULLET: Tells browser it is physically forbidden from shrinking text width */
+  white-space: nowrap !important;   /* Absolute rule: prevents multi-word names like "Book Stall" from stacking text vertically */
+  text-decoration: none !important;
+  font-size: 0.875rem !important;   /* Matches text-sm */
+  font-weight: 500 !important;      /* Matches font-medium */
+}
+
+/* Button & Action Alignment Handlers */
+#mall-main-header .mall-btn {
+  box-shadow: none !important;
+  transform: none !important;
+  text-transform: none !important;
+  height: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+#mall-main-header .mall-btn:not(.active) {
+  background-color: #1e293b !important;
+  background: #1e293b !important;
+  color: #ffffff !important;
+}
+
+#mall-main-header .mall-btn.active {
+  background-color: #2563eb !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* Right-side utilities container (Tickets, Dark Mode Toggle) */
+#mall-main-header .mall-right-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* ==========================================================================
+   SPECIFIC PRODUCT GALLERY AND SUB-CATEGORY STYLES
+   ========================================================================== */
+
+.books-grid,
+div:has(> .book-card) {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+  gap: 24px !important;
+  width: 100% !important;
+  padding: 20px 0 !important;
+}
+
+.book-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* ==========================================================================
+   FRAGRANCE STORE ISOLATION & STYLING SHIELD
+   ========================================================================== */
+.fragrance-store-app {
+  width: 100% !important;
+  min-height: 100vh !important;
+  background-color: #fafafa !important;
+}
+
+.fragrance-store-app header {
+  background: linear-gradient(135deg, #0f172a, #1e1b4b) !important;
+  color: #ffffff !important;
+  padding: 25px 20px !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 15px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.fragrance-store-app header h1 {
+  color: #ffffff !important;
+  font-size: 2.2rem !important;
+  font-weight: 800 !important;
+  margin: 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+.fragrance-store-app header nav {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 10px 0 !important;
+  width: 100% !important;
+}
+
+.fragrance-store-app header nav a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  padding: 8px 18px !important;
+  border-radius: 25px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(8px) !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.fragrance-store-app header nav a:hover {
+  background: #ffffff !important;
+  color: #1e1b4b !important;
+  transform: translateY(-2px) !important;
+}
+
+.fragrance-store-app .cart-btn {
+  background: #818cf8 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 8px 22px !important;
+  border-radius: 25px !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  box-shadow: 0 4px 12px rgba(129, 140, 248, 0.4) !important;
+}
+
+/* ==========================================================================
+   BOOK STALL ISOLATION & STYLING SHIELD
+   ========================================================================== */
+.book-stall-app {
+  width: 100% !important;
+  min-height: 100vh !important;
+  background-color: #f8fafc !important;
+}
+
+.book-stall-app .navbar {
+  background: #0f172a !important;
+  padding: 1rem 1.5rem !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+}
+
+.book-stall-app .navbar .container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
+  width: 100% !important;
+}
+
+.book-stall-app .navbar-brand {
+  color: #ffffff !important;
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  text-decoration: none !important;
+}
+
+.book-stall-app form.d-flex {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.book-stall-app form.d-flex input {
+  padding: 8px 16px !important;
+  border-radius: 20px !important;
+  border: 1px solid #cbd5e1 !important;
+  outline: none !important;
+  font-size: 0.9rem !important;
+}
+
+.book-stall-app .d-flex.flex-wrap.justify-content-center.gap-2 {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  margin: 20px 0 !important;
+}
+
+.book-stall-app .btn-outline-primary,
+.book-stall-app .btn-primary {
+  padding: 8px 18px !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.book-stall-app .btn-outline-primary {
+  color: #2563eb !important;
+  border: 1px solid #2563eb !important;
+  background-color: #ffffff !important;
+}
+
+.book-stall-app .btn-outline-primary:hover,
+.book-stall-app .btn-primary {
+  color: #ffffff !important;
+  background-color: #2563eb !important;
+  border: 1px solid #2563eb !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+}
+

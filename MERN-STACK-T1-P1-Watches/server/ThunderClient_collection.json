@@ -1,0 +1,122 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "LuxeWatch API",
+  "folder": [
+    {
+      "name": "Products",
+      "requests": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/products",
+            "headers": []
+          }
+        },
+        {
+          "name": "Get Men Products",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/products?category=men",
+            "headers": []
+          }
+        },
+        {
+          "name": "Get Women Products",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/products?category=women",
+            "headers": []
+          }
+        },
+        {
+          "name": "Get Products by Brand",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/products?brand=Rolex",
+            "headers": []
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/products/1",
+            "headers": []
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:5000/api/products",
+            "headers": [
+              { "name": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "type": "json",
+              "raw": "{ \"id\": 15, \"name\": \"Test Watch\", \"brand\": \"TestBrand\", \"price\": 999, \"image\": \"https://example.com/watch.jpg\", \"category\": \"men\", \"description\": \"A test product\" }"
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:5000/api/products/15",
+            "headers": [
+              { "name": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "type": "json",
+              "raw": "{ \"price\": 1099, \"name\": \"Test Watch Updated\" }"
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:5000/api/products/15",
+            "headers": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "requests": [
+        {
+          "name": "Get All Orders",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/orders",
+            "headers": []
+          }
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:5000/api/orders",
+            "headers": [
+              { "name": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "type": "json",
+              "raw": "{\n  \"customerName\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"1234567890\",\n  \"address\": \"123 Main St\",\n  \"city\": \"New York\",\n  \"zip\": \"10001\",\n  \"paymentMethod\": \"phonepe\",\n  \"items\": [{ \"id\": 1, \"name\": \"Submariner Date\", \"brand\": \"Rolex\", \"price\": 9750, \"image\": \"https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=400\", \"quantity\": 1 }],\n  \"total\": 9750\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Order by ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:5000/api/orders/LWTest123",
+            "headers": []
+          }
+        }
+      ]
+    }
+  ]
+}

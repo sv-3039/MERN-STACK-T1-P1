@@ -1,0 +1,463 @@
+.cosmetics-store-app {
+  background: #f8f8f8;
+  min-height: 100vh;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 10px 0;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0e0e5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.12);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.card h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.card p {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #e91e63;
+  margin-bottom: 12px;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.product-rating .stars {
+  color: #ffb400;
+}
+
+.cosmetics-store-app button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #e91e63;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cosmetics-store-app button:hover {
+  background: #c2185b;
+}
+
+/* ============================
+   Order Page 
+============================ */
+.order-box {
+  width: 450px;
+  max-width: 100%;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+
+.order-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #e91e63;
+}
+
+.order-box p {
+  margin: 10px 0;
+}
+
+.order-box input,
+.order-box textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.order-box textarea {
+  height: 100px;
+  resize: none;
+}
+
+.order-box button {
+  margin-top: 15px;
+}
+
+/* ============================
+   Order Summary Mini Receipt
+============================ */
+.order-summary-box {
+  background: #f9f9f9;
+  border: 1px solid #f0e0e5;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 14px;
+  color: #555;
+  padding: 4px 0;
+}
+
+.order-summary-items {
+  text-align: right;
+  color: #333;
+}
+
+.order-discount-row {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.order-final-row {
+  border-top: 1px dashed #ddd;
+  margin-top: 6px;
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #e91e63;
+}
+
+/* ============================
+   Order Form Inputs
+============================ */
+.order-box .order-input,
+.order-box .order-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-box .order-input:focus,
+.order-box .order-textarea:focus {
+  border-color: #e91e63;
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.15);
+}
+
+.order-box .order-textarea {
+  height: 100px;
+  resize: none;
+}
+
+/* ============================
+   Order Buttons Hierarchy
+============================ */
+.place-order-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  background: #e91e63;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.place-order-btn:hover {
+  background: #c2185b;
+}
+
+.back-order-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 2px solid #e91e63;
+  background: #fff;
+  color: #e91e63;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-order-btn:hover {
+  background: #fce4ec;
+}
+
+/* Specific styling for the Cart controls to prevent them from taking 100% width */
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:hover {
+  background-color: #ddd;
+}
+
+.delete-btn {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  color: #e91e63;
+  padding: 0;
+  font-size: 20px;
+}
+
+.delete-btn:hover {
+  background: #ffeeef;
+  color: red;
+}
+
+/* ============================
+   Full Page Cart Styles
+============================ */
+.cart-page {
+  background: white;
+  max-width: 900px;
+  margin: 20px auto 60px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.cart-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.cart-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background: #fafafa;
+  transition: 0.3s;
+}
+
+.cart-item-row:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: white;
+  padding: 5px;
+  border: 1px solid #eaeaea;
+}
+
+.cart-item-details {
+  flex: 2;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.cart-item-details h4 {
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 18px;
+}
+
+.cart-item-brand {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.qty-display {
+  font-weight: bold;
+  width: 30px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.cart-item-total {
+  flex: 1;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: right;
+  padding-right: 25px;
+  color: #333;
+}
+
+.cart-summary {
+  border-top: 2px solid #eee;
+  padding-top: 25px;
+  text-align: right;
+}
+
+/* ============================
+   Coupon Section (Cart)
+============================ */
+.coupon-section {
+  margin-bottom: 20px;
+}
+
+.coupon-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.coupon-input {
+  width: 220px;
+  max-width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.coupon-input:focus {
+  border-color: #e91e63;
+}
+
+.coupon-apply-btn {
+  width: auto;
+  padding: 12px 24px;
+  background: #e91e63;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.coupon-apply-btn:hover {
+  background: #c2185b;
+}
+
+.coupon-message {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.coupon-message.success {
+  color: #2e7d32;
+}
+
+.coupon-message.error {
+  color: #d32f2f;
+}
+
+.coupon-discount {
+  margin-top: 10px;
+  color: #2e7d32;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .coupon-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .coupon-input {
+    width: 100%;
+  }
+  .coupon-apply-btn {
+    width: 100%;
+  }
+}
+
+.cart-summary h3 {
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.back-btn {
+  background: #9e9e9e;
+  width: auto;
+  padding: 12px 30px;
+}
+
+.back-btn:hover {
+  background: #757575;
+}
+
+.checkout-btn {
+  width: auto;
+  padding: 12px 30px;
+  background: #e91e63;
+}

@@ -1,0 +1,40 @@
+.popular-section {
+  background: var(--bg-pink-light);
+}
+
+.popular-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.popular-swiper {
+  padding: 6px 4px 44px;
+}
+
+.popular-swiper .swiper-button-next,
+.popular-swiper .swiper-button-prev {
+  width: 44px;
+  height: 44px;
+  background: var(--bg-white);
+  border-radius: 50%;
+  box-shadow: var(--shadow-card);
+  color: var(--primary-pink);
+  top: 40%;
+}
+
+.popular-swiper .swiper-button-next::after,
+.popular-swiper .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+@media (max-width: 700px) {
+  .popular-swiper .swiper-button-next,
+  .popular-swiper .swiper-button-prev {
+    display: none;
+  }
+}

@@ -1,0 +1,18 @@
+.manage-orders{
+    max-width:1000px;
+    margin:auto;
+    padding:40px;
+}
+
+.order-card{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:12px;
+    box-shadow:0 10px 20px rgba(0,0,0,.1);
+}
+
+.order-card select{
+    padding:10px;
+    margin-top:15px;
+}

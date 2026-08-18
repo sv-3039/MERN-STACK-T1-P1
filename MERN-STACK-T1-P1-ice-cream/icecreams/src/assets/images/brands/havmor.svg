@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" rx="36" fill="#A83246"/>
+  <rect x="14" y="14" width="172" height="172" rx="26" fill="none" stroke="#FFF" stroke-width="2" opacity="0.3"/>
+  <circle cx="100" cy="72" r="32" fill="#FFF" opacity="0.12"/>
+  <path d="M85 72 Q100 52 115 72 Q100 92 85 72 Z" fill="#FFC107"/>
+  <text x="100" y="125" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="34" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">Havmor</text>
+  <text x="100" y="152" font-family="sans-serif" font-weight="700" font-size="10" fill="#FFE082" text-anchor="middle" letter-spacing="1">FRESHNESS GUARANTEED</text>
+</svg>

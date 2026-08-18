@@ -1,0 +1,756 @@
+.sports-store-app {
+    background:#0b0b0b;
+    color:white;
+    min-height: 100vh;
+}
+
+.sports-store-app nav {
+    width:100%;
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 8%;
+    background:#111;
+}
+
+
+.logo{
+    color:white;
+    font-size:30px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+
+.logo i{
+    color:#00ff88;
+    margin-right:10px;
+}
+
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+
+.nav_link{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+
+.nav_link li a{
+
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+
+}
+
+
+.nav_link li a:hover{
+    color:#00ff88;
+}
+
+
+
+.search-image{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+
+.search-box{
+
+    background:white;
+    padding:8px 15px;
+    border-radius:20px;
+
+}
+
+
+.search-box input{
+
+    border:none;
+    outline:none;
+}
+
+
+.search-box i{
+    color:black;
+}
+
+
+
+.button a{
+
+    text-decoration:none;
+    color:white;
+    border:1px solid #00ff88;
+    padding:8px 15px;
+    margin:5px;
+    border-radius:20px;
+
+}
+
+
+.button a:hover{
+
+    background:#00ff88;
+    color:black;
+
+}
+
+
+
+.BarIcons{
+
+    display:none;
+    font-size:25px;
+
+}
+
+
+
+
+main{
+
+    height:600px;
+    background:
+
+    linear-gradient(
+    rgba(0,0,0,.6),
+    rgba(0,0,0,.8)
+    ),
+
+    url("./../images/sports-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+
+}
+
+
+.main-content{
+
+    width:80%;
+    margin:auto;
+
+}
+
+
+.main-heading{
+
+    max-width:600px;
+
+}
+
+
+.main-heading h1{
+
+    font-size:60px;
+    text-transform:capitalize;
+
+}
+
+
+.main-heading span{
+
+    color:#00ff88;
+
+}
+
+
+.main-heading p{
+
+    margin:20px 0;
+    line-height:1.7;
+    color:#ddd;
+
+}
+
+
+.main-heading button{
+
+    padding:14px 30px;
+    background:#00ff88;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+
+}
+
+
+.main-heading button:hover{
+
+    background:white;
+
+}
+
+
+
+
+
+.partners{
+
+    padding:40px 8%;
+    background:#111;
+
+}
+
+
+.partners-1,
+.partners-2{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    margin:30px 0;
+
+}
+
+
+.partners img{
+
+    width:120px;
+    height:60px;
+    object-fit:contain;
+    background:white;
+    padding:10px;
+    border-radius:10px;
+
+}
+
+
+
+
+
+footer{
+
+    background:#050505;
+    padding:50px 8% 20px;
+
+}
+
+
+.col-1 h1{
+
+    margin-bottom:20px;
+
+}
+
+
+.icons{
+
+    display:flex;
+    gap:20px;
+
+}
+
+
+.icons i{
+
+    font-size:30px;
+    cursor:pointer;
+
+}
+
+
+.icons i:hover{
+
+    color:#00ff88;
+
+}
+
+
+.col-2{
+
+    display:flex;
+    justify-content:space-between;
+    margin-top:40px;
+
+}
+
+
+.list h2{
+
+    margin-bottom:20px;
+
+}
+
+
+.list ul{
+
+    list-style:none;
+
+}
+
+
+.list ul li{
+
+    margin:10px 0;
+    color:#ccc;
+
+}
+
+
+.footer-bottom{
+
+    margin-top:40px;
+    text-align:center;
+    border-top:1px solid #333;
+    padding-top:20px;
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+
+nav{
+
+    padding:0 5%;
+
+}
+
+
+.menu{
+
+    position:absolute;
+    top:80px;
+    left:0;
+    width:100%;
+    background:#111;
+    flex-direction:column;
+    padding:30px;
+    display:none;
+
+}
+
+
+.menu.active{
+
+    display:flex;
+
+}
+
+
+.nav_link{
+
+    flex-direction:column;
+
+}
+
+
+.BarIcons{
+
+    display:flex;
+    gap:20px;
+
+}
+
+
+
+.main-heading h1{
+
+    font-size:40px;
+
+}
+
+
+.col-2{
+
+    flex-direction:column;
+    gap:30px;
+
+}
+
+
+
+.partners-1,
+.partners-2{
+
+    flex-wrap:wrap;
+
+}
+
+}
+
+
+.main-news-image{
+
+height:350px;
+border-radius:15px;
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:40px;
+margin-bottom:40px;
+background-position:center;
+background-size:cover;
+
+}
+
+.indoor-btn {
+    background: #0c0c0c;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.indoor-btn:hover {
+    background: #181817;
+    transform: scale(1.05);
+}
+
+.indoor-btn:active {
+    transform: scale(0.95);
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+
+.store-section {
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 50px;
+  border-radius: 12px;
+}
+
+.store-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.store-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.store-desc {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.store-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.store-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.store-btn.primary {
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+}
+
+.store-btn.secondary {
+  background: transparent;
+  border: 2px solid #ffcc00;
+  color: #ffcc00;
+}
+
+.store-btn:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+
+/* Outdoor Store Section */
+.store-section {
+  background: linear-gradient(135deg, #004d40, #00796b);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 50px;
+  border-radius: 12px;
+}
+
+.store-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #ffeb3b;
+}
+
+.store-desc {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.store-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.store-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.store-btn.primary {
+  background: #ffeb3b;
+  color: #000;
+  font-weight: bold;
+}
+
+.store-btn.secondary {
+  background: transparent;
+  border: 2px solid #ffeb3b;
+  color: #ffeb3b;
+}
+
+.store-btn:hover {
+  transform: scale(1.05);
+}
+
+
+
+.news-card {
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #e3f2fd
+    );
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+
+    transition:0.3s;
+
+    border:2px solid #2196f3;
+
+}
+
+
+.news-card:hover {
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
+
+}
+
+
+
+/* Game Image */
+
+.news-image {
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+
+
+
+.news-content {
+
+    padding:20px;
+
+    color:#333;
+
+}
+
+
+
+/* Game title */
+
+.news-content h3 {
+
+    color:#1565c0;
+
+    font-size:25px;
+
+}
+
+
+
+/* Description */
+
+.news-content p {
+
+    color:#555;
+
+    line-height:1.5;
+
+}
+
+
+
+
+/* Player and price */
+
+.comp-date {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:15px 0;
+
+}
+
+
+.comp-date h4 {
+
+    background:#673ab7;
+
+    color:white;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+}
+
+
+
+.price {
+
+    background:#2e7d32 !important;
+
+}
+
+
+
+
+
+/* View Details Button */
+
+.sports-store-app .details-btn,
+.details-btn {
+
+    background: #1d4ed8;
+
+    color: #ffffff;
+
+    padding: 10px 18px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    margin: 6px 8px 6px 0;
+
+    display: inline-block;
+
+    font-weight: 700;
+
+    font-size: 0.88rem;
+
+    transition: all 0.2s ease;
+
+}
+
+
+
+
+/* Add Cart Button */
+
+.sports-store-app .cart-btn,
+.cart-btn {
+
+    background: #15803d;
+
+    color: #ffffff;
+
+    padding: 10px 18px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    margin: 6px 8px 6px 0;
+
+    display: inline-block;
+
+    font-weight: 700;
+
+    font-size: 0.88rem;
+
+    transition: all 0.2s ease;
+
+}
+
+
+
+
+.details-btn:hover {
+
+    background: #1e40af;
+
+}
+
+.cart-btn:hover {
+
+    background: #166534;
+
+}
+
+
+
+.cart-btn:hover {
+
+    background:#1b5e20;
+
+}

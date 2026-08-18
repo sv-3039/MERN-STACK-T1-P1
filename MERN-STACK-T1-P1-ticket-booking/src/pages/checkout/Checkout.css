@@ -1,0 +1,49 @@
+.checkout {
+  min-height: 100vh;
+  background: #121212;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.summary {
+  width: 500px;
+  max-width: 95%;
+  background: #1f1f1f;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.summary h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.summary p {
+  margin: 12px 0;
+  font-size: 17px;
+}
+
+.summary h2 {
+  margin-top: 25px;
+  color: #f1c40f;
+}
+
+.summary button {
+  width: 100%;
+  margin-top: 30px;
+  padding: 14px;
+  background: #e50914;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.summary button:hover {
+  background: #c40812;
+}
